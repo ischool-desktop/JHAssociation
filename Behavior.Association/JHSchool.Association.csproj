@@ -1,0 +1,654 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{865D67CA-A1EC-4EF0-AD7A-FD15E2AF6A42}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JHSchool.Association</RootNamespace>
+    <AssemblyName>JHSchool.Association</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.Cells, Version=4.4.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Documents and Settings\Dylan.Huang\桌面\系統\FiscaAE國中開發\modules\Campus\Aspose.Cells.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Aspose.Words, Version=4.4.1.0, Culture=neutral, PublicKeyToken=716fcc553a201e56">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Documents and Settings\Dylan.Huang\桌面\系統\FiscaAE國中開發\modules\Campus\Aspose.Words.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Campus.Windows">
+      <HintPath>..\..\..\..\..\Documents and Settings\Dylan.Huang\桌面\系統\FiscaAE國中開發\modules\Campus\Campus.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar2, Version=9.5.0.1, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Documents and Settings\Dylan.Huang\桌面\系統\FiscaAE國中開發\components\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
+    <Reference Include="DocValidate">
+      <HintPath>..\..\..\..\..\Documents and Settings\Dylan.Huang\桌面\系統\FiscaAE國中開發\modules\JHCore_Beta\DocValidate.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA">
+      <HintPath>..\..\..\..\..\Documents and Settings\Dylan.Huang\桌面\系統\(FISCA)iSchool國中系統AE\kernel\FISCA.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.Authentication">
+      <HintPath>..\..\..\..\..\Documents and Settings\Dylan.Huang\桌面\系統\(FISCA)iSchool國中系統AE\kernel\FISCA.Authentication.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.Data">
+      <HintPath>..\..\..\..\..\Documents and Settings\Dylan.Huang\桌面\系統\(FISCA)iSchool國中系統AE\kernel\FISCA.Data.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.DSAClient">
+      <HintPath>..\..\..\..\..\Documents and Settings\Dylan.Huang\桌面\系統\(FISCA)iSchool國中系統AE\kernel\FISCA.DSAClient.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.DSAUtil">
+      <HintPath>..\..\..\..\..\Documents and Settings\Dylan.Huang\桌面\系統\(FISCA)iSchool國中系統AE\kernel\FISCA.DSAUtil.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.LogAgent">
+      <HintPath>..\..\..\..\..\Documents and Settings\Dylan.Huang\桌面\系統\(FISCA)iSchool國中系統AE\kernel\FISCA.LogAgent.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.Permission">
+      <HintPath>..\..\..\..\..\Documents and Settings\Dylan.Huang\桌面\系統\(FISCA)iSchool國中系統AE\kernel\FISCA.Permission.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.Presentation">
+      <HintPath>..\..\..\..\..\Documents and Settings\Dylan.Huang\桌面\系統\(FISCA)iSchool國中系統AE\kernel\FISCA.Presentation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.UDT">
+      <HintPath>..\..\..\..\..\Documents and Settings\Dylan.Huang\桌面\系統\(FISCA)iSchool國中系統AE\kernel\FISCA.UDT.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Framework">
+      <HintPath>..\..\..\..\..\Documents and Settings\Dylan.Huang\桌面\系統\FiscaAE國中開發\modules\JHCore_Beta\Framework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="IntelliSchool.DSA.ClientFramework">
+      <HintPath>..\..\..\..\..\Documents and Settings\Dylan.Huang\桌面\系統\FiscaAE國中開發\modules\JHCore_Beta\IntelliSchool.DSA.ClientFramework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="JHSchool">
+      <HintPath>..\..\FiscaRuntime\addmodules\JHCore\JHSchool.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="JHSchool.Data">
+      <HintPath>..\..\..\..\..\Documents and Settings\Dylan.Huang\桌面\系統\(FISCA)iSchool國中系統AE\modules\JHCore_Beta\JHSchool.Data.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="JHSchool.Evaluation">
+      <HintPath>..\..\..\..\..\Documents and Settings\Dylan.Huang\桌面\系統\(FISCA)iSchool國中系統AE\modules\JHEvaluation_Beta\JHSchool.Evaluation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="K12.Data">
+      <HintPath>..\..\..\..\..\Documents and Settings\Dylan.Huang\桌面\系統\FiscaAE國中開發\modules\JHCore_Beta\K12.Data.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="K12.Presentation">
+      <HintPath>..\..\..\..\..\Documents and Settings\Dylan.Huang\桌面\系統\FiscaAE國中開發\modules\JHCore_Beta\K12.Presentation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SmartSchool.API.PlugIn">
+      <HintPath>..\..\..\..\..\Documents and Settings\Dylan.Huang\桌面\系統\FiscaAE國中開發\modules\JHCore_Beta\SmartSchool.API.PlugIn.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SmartSchool.Common">
+      <HintPath>..\..\FiscaRuntime\addmodules\JHCore\SmartSchool.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SmartSchool.Common.DotNetBar">
+      <HintPath>..\..\..\..\..\Documents and Settings\Dylan.Huang\桌面\系統\FiscaAE國中開發\modules\JHCore_Beta\SmartSchool.Common.DotNetBar.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SmartSchool.Customization.Data">
+      <HintPath>..\..\..\..\..\Documents and Settings\Dylan.Huang\桌面\系統\FiscaAE國中開發\modules\JHCore_Beta\SmartSchool.Customization.Data.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SmartSchool.Customization.PlugIn">
+      <HintPath>..\..\..\..\..\Documents and Settings\Dylan.Huang\桌面\系統\FiscaAE國中開發\modules\JHCore_Beta\SmartSchool.Customization.PlugIn.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SmartSchool.ErrorReporting">
+      <HintPath>..\..\LibraryProject\SmartSchool.ErrorReporting.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="aKeyFactor.cs" />
+    <Compile Include="AssnAdmin.cs" />
+    <Compile Include="AssnEvents.cs" />
+    <Compile Include="AssnScoreRecord.cs" />
+    <Compile Include="AssonExtendControls\AssnCourseItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AssonExtendControls\AssnCourseItem.Designer.cs">
+      <DependentUpon>AssnCourseItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DetailContentBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DetailContentBase.designer.cs">
+      <DependentUpon>DetailContentBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListViewEX.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\CadreReport\SocietiesLeaders.cs" />
+    <Compile Include="Report\CadreReport\SQLselect_School.cs" />
+    <Compile Include="TheCadre\CadreInNewForm\CadreDataRowSchool.cs" />
+    <Compile Include="TheCadre\CadreInNewForm\GetAllStudent.cs" />
+    <Compile Include="TheCadre\CadreInNewForm\MutiMeritDemerit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TheCadre\CadreInNewForm\MutiMeritDemerit.designer.cs">
+      <DependentUpon>MutiMeritDemerit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TheCadre\CadreInNewForm\AssociationByClassSeanNo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TheCadre\CadreInNewForm\AssociationByClassSeanNo.designer.cs">
+      <DependentUpon>AssociationByClassSeanNo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TheCadre\CadreInNewForm\SetDataGridViewRowState.cs" />
+    <Compile Include="TheCadre\SpeedInsert\ConfigFormMethod.cs" />
+    <Compile Include="TheCadre\SpeedInsert\DataGridViewErrorCheck.cs" />
+    <Compile Include="TheCadre\SpeedInsert\NewCadreSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TheCadre\SpeedInsert\NewCadreSetup.designer.cs">
+      <DependentUpon>NewCadreSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClassExtendControls\IntoAssociationGroups\ClassAssnDivide.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClassExtendControls\IntoAssociationGroups\ClassAssnDivide.Designer.cs">
+      <DependentUpon>ClassAssnDivide.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClassExtendControls\IntoAssociationGroups\DivideOBJ.cs" />
+    <Compile Include="DataGridViewComboBoxExColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Log\CompleteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Log\CompleteForm.designer.cs">
+      <DependentUpon>CompleteForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Log\TextBoxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Log\TextBoxForm.designer.cs">
+      <DependentUpon>TextBoxForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Log\ViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Log\ViewForm.designer.cs">
+      <DependentUpon>ViewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ribbon\AssnAddress\AssnAddressForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ribbon\AssnAddress\AssnAddressForm.Designer.cs">
+      <DependentUpon>AssnAddressForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImportExport\匯出匯入社團基本資料\CourseExportWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportExport\匯出匯入社團基本資料\CourseExportWizard.designer.cs">
+      <DependentUpon>CourseExportWizard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImportExport\匯出匯入活動表現紀錄\ExportAssnCode.cs" />
+    <Compile Include="ImportExport\匯出匯入活動表現紀錄\ImportAssnCode.cs" />
+    <Compile Include="AssonExtendControls\SCAItem.cs" />
+    <Compile Include="CustomDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataGridViewExport.cs" />
+    <Compile Include="EffortMapper.cs" />
+    <Compile Include="ImportExport\匯出匯入活動表現紀錄\ExportStudentV2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportExport\匯出匯入活動表現紀錄\ExportStudentV2.designer.cs">
+      <DependentUpon>ExportStudentV2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImportExport\匯出匯入活動表現紀錄\ImportStudentV2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportExport\匯出匯入活動表現紀錄\ImportStudentV2.designer.cs">
+      <DependentUpon>ImportStudentV2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImportExport\匯出匯入活動表現紀錄\匯出對照表.cs" />
+    <Compile Include="ImportExport\匯出匯入活動表現紀錄\匯出表現資料.cs" />
+    <Compile Include="ImportExport\匯出匯入社團基本資料\Import\AssociationImportWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportExport\匯出匯入社團基本資料\Import\AssociationImportWizard.designer.cs">
+      <DependentUpon>AssociationImportWizard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImportExport\匯出匯入社團基本資料\Import\CourseLookup.cs" />
+    <Compile Include="ImportExport\匯出匯入社團基本資料\Import\ImportDataAccess.cs" />
+    <Compile Include="ImportExport\匯出匯入社團基本資料\Import\TeacherDuplicateRowValidator.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ClassExtendControls\ParticipateAssn\CheckCourseIsAssn.cs" />
+    <Compile Include="ClassExtendControls\ParticipateAssn\ParticipateBOT.cs" />
+    <Compile Include="ClassExtendControls\ParticipateAssn\ParticipateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClassExtendControls\ParticipateAssn\ParticipateForm.Designer.cs">
+      <DependentUpon>ParticipateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\ResultsCollation\CollationClass.cs" />
+    <Compile Include="Report\Utility.cs" />
+    <Compile Include="Ribbon\AssnAddress\AddressNameList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ribbon\AssnAddress\AddressNameList.designer.cs">
+      <DependentUpon>AddressNameList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ribbon\AssnCheck\ReiterateAssnForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ribbon\AssnCheck\ReiterateAssnForm.Designer.cs">
+      <DependentUpon>ReiterateAssnForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\StudentStudyList\StudentAsson.cs" />
+    <Compile Include="Ribbon\AddCourse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ribbon\AddCourse.designer.cs">
+      <DependentUpon>AddCourse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ribbon\AssnCheck\NotHaveToParticipateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ribbon\AssnCheck\NotHaveToParticipateForm.Designer.cs">
+      <DependentUpon>NotHaveToParticipateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ribbon\AssnEvaluationConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ribbon\AssnEvaluationConfig.Designer.cs">
+      <DependentUpon>AssnEvaluationConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UDT\AssnObj.cs" />
+    <Compile Include="Ribbon\AssnResultsInputCheck\AssnSelect.cs" />
+    <Compile Include="Ribbon\AssnStudentChange\ChangeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ribbon\AssnStudentChange\ChangeForm.Designer.cs">
+      <DependentUpon>ChangeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ribbon\AssnCourseResults.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ribbon\AssnCourseResults.Designer.cs">
+      <DependentUpon>AssnCourseResults.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AssonExtendControls\StudentDetailItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AssonExtendControls\StudentDetailItem.Designer.cs">
+      <DependentUpon>StudentDetailItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExtracurricularActivitiesView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExtracurricularActivitiesView.Designer.cs">
+      <DependentUpon>ExtracurricularActivitiesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\SpecifyByName\ClubActivitiesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\SpecifyByName\ClubActivitiesForm.designer.cs">
+      <DependentUpon>ClubActivitiesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\SpecifyByName\GetConfigData.cs" />
+    <Compile Include="Report\SpecifyByName\GetCourseDetail.cs" />
+    <Compile Include="Report\SpecifyByName\GetDayList.cs" />
+    <Compile Include="Report\SpecifyByName\PrintSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\SpecifyByName\PrintSetup.designer.cs">
+      <DependentUpon>PrintSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ribbon\CourseResultsDio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ribbon\CourseResultsDio.Designer.cs">
+      <DependentUpon>CourseResultsDio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectAllStudent.cs" />
+    <Compile Include="SortCompareTo.cs" />
+    <Compile Include="StudentExtendControls\StudentSettleAccountsAssnItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StudentExtendControls\StudentSettleAccountsAssnItem.Designer.cs">
+      <DependentUpon>StudentSettleAccountsAssnItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TheCadre\CadreByAssnItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TheCadre\CadreByAssnItem.Designer.cs">
+      <DependentUpon>CadreByAssnItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UDT\AssnAddress.cs" />
+    <Compile Include="TheCadre\SpeedInsert\OldCadreSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TheCadre\SpeedInsert\OldCadreSetup.designer.cs">
+      <DependentUpon>OldCadreSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UDT\AssnCode.cs" />
+    <Compile Include="Ribbon\AssnResultsInputCheck\AssonResultsCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ribbon\AssnResultsInputCheck\AssonResultsCheck.Designer.cs">
+      <DependentUpon>AssonResultsCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UDT\ClassCadreNameObj.cs" />
+    <Compile Include="UDT\SchoolObject.cs" />
+    <Compile Include="UDT\SettleAccountsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UDT\SettleAccountsForm.Designer.cs">
+      <DependentUpon>SettleAccountsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UDT\活動表現紀錄對照表.cs" />
+    <Compile Include="UDT\檢視表現資料.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UDT\檢視表現資料.Designer.cs">
+      <DependentUpon>檢視表現資料.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UDT\活動表現紀錄.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AssonExtendControls\AssnCourseItem.resx">
+      <DependentUpon>AssnCourseItem.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TheCadre\CadreInNewForm\MutiMeritDemerit.resx">
+      <DependentUpon>MutiMeritDemerit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TheCadre\CadreInNewForm\AssociationByClassSeanNo.resx">
+      <DependentUpon>AssociationByClassSeanNo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TheCadre\SpeedInsert\NewCadreSetup.resx">
+      <DependentUpon>NewCadreSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClassExtendControls\IntoAssociationGroups\ClassAssnDivide.resx">
+      <DependentUpon>ClassAssnDivide.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Log\CompleteForm.resx">
+      <DependentUpon>CompleteForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Log\TextBoxForm.resx">
+      <DependentUpon>TextBoxForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Log\ViewForm.resx">
+      <DependentUpon>ViewForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ribbon\AssnAddress\AssnAddressForm.resx">
+      <DependentUpon>AssnAddressForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImportExport\匯出匯入社團基本資料\CourseExportWizard.resx">
+      <DependentUpon>CourseExportWizard.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImportExport\匯出匯入活動表現紀錄\ExportStudentV2.resx">
+      <DependentUpon>ExportStudentV2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImportExport\匯出匯入活動表現紀錄\ImportStudentV2.resx">
+      <DependentUpon>ImportStudentV2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImportExport\匯出匯入社團基本資料\Import\AssociationImportWizard.resx">
+      <DependentUpon>AssociationImportWizard.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClassExtendControls\ParticipateAssn\ParticipateForm.resx">
+      <DependentUpon>ParticipateForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ribbon\AssnAddress\AddressNameList.resx">
+      <DependentUpon>AddressNameList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ribbon\AssnCheck\ReiterateAssnForm.resx">
+      <DependentUpon>ReiterateAssnForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ribbon\AddCourse.resx">
+      <DependentUpon>AddCourse.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ribbon\AssnCheck\NotHaveToParticipateForm.resx">
+      <DependentUpon>NotHaveToParticipateForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ribbon\AssnEvaluationConfig.resx">
+      <DependentUpon>AssnEvaluationConfig.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ribbon\AssnCourseResults.resx">
+      <DependentUpon>AssnCourseResults.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AssonExtendControls\StudentDetailItem.resx">
+      <DependentUpon>StudentDetailItem.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExtracurricularActivitiesView.resx">
+      <DependentUpon>ExtracurricularActivitiesView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\SpecifyByName\ClubActivitiesForm.resx">
+      <DependentUpon>ClubActivitiesForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\SpecifyByName\PrintSetup.resx">
+      <DependentUpon>PrintSetup.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ribbon\AssnStudentChange\ChangeForm.resx">
+      <DependentUpon>ChangeForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ribbon\CourseResultsDio.resx">
+      <DependentUpon>CourseResultsDio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentExtendControls\StudentSettleAccountsAssnItem.resx">
+      <DependentUpon>StudentSettleAccountsAssnItem.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ribbon\AssnResultsInputCheck\AssonResultsCheck.resx">
+      <DependentUpon>AssonResultsCheck.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TheCadre\CadreByAssnItem.resx">
+      <DependentUpon>CadreByAssnItem.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TheCadre\SpeedInsert\OldCadreSetup.resx">
+      <DependentUpon>OldCadreSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UDT\SettleAccountsForm.resx">
+      <DependentUpon>SettleAccountsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UDT\檢視表現資料.resx">
+      <DependentUpon>檢視表現資料.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\社團幹部總表_範本.xls" />
+    <None Include="Resources\社團活動範本.doc" />
+    <None Include="Resources\課程修課學生清單.xls" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paste_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\photoshop_write_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\physical_science_lock_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\recreation_add_64.png" />
+    <None Include="Resources\班級社團分組名單.xls" />
+    <None Include="Resources\社團成績校對單.xls" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Import.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Export.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_row_128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\conver_to_text_reload_128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\animation_info_128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blur_info_128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\corel_info_128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trainning_refresh_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\recreation_close_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\architecture_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\distibute_vertical_center_refresh_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder_zoom_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stamp_paper_fav_128.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
