@@ -15,7 +15,9 @@ namespace JHSchool.Association
 
         static public void Main()
         {
+
             #region 主要
+
             //增加一個頁籤
             MotherForm.AddPanel(AssnAdmin.Instance);
 
@@ -23,16 +25,23 @@ namespace JHSchool.Association
             AssnAdmin.Instance.AddView(new ExtracurricularActivitiesView());
 
             //基本資料
-            AssnAdmin.Instance.AddDetailBulider(new FISCA.Presentation.DetailBulider<AssnCourseItem>());
+            FISCA.Permission.FeatureAce UserPermission;
+            UserPermission = FISCA.Permission.UserAcl.Current["JHSchool.Association.Detail0010"];
+            if (UserPermission.Editable || UserPermission.Viewable)
+                AssnAdmin.Instance.AddDetailBulider(new FISCA.Presentation.DetailBulider<AssnCourseItem>());
 
             //學生資訊
-            AssnAdmin.Instance.AddDetailBulider(new FISCA.Presentation.DetailBulider<StudentDetailItem>());
+            UserPermission = FISCA.Permission.UserAcl.Current["JHSchool.Association.Detail0020"];
+            if (UserPermission.Editable || UserPermission.Viewable)
+                AssnAdmin.Instance.AddDetailBulider(new FISCA.Presentation.DetailBulider<StudentDetailItem>());
 
             //社團幹部
             //AssnAdmin.Instance.AddDetailBulider(new FISCA.Presentation.DetailBulider<CadreByAssnItem>());
 
             //學生結算資料項目
-            Student.Instance.AddDetailBulider(new FISCA.Presentation.DetailBulider<StudentSettleAccountsAssnItem>());
+            UserPermission = FISCA.Permission.UserAcl.Current["JHSchool.Association.Detail0030"];
+            if (UserPermission.Editable || UserPermission.Viewable)
+                Student.Instance.AddDetailBulider(new FISCA.Presentation.DetailBulider<StudentSettleAccountsAssnItem>());
 
             AssnAdmin.Instance.ListPaneContexMenu["更新畫面資料"].Image = Resources.trainning_refresh_64;
             AssnAdmin.Instance.ListPaneContexMenu["更新畫面資料"].Click += delegate
@@ -128,7 +137,7 @@ namespace JHSchool.Association
             #endregion
 
             RibbonBarItem Print = AssnAdmin.Instance.RibbonBarItems["資料統計"];
-            
+
             #region 匯出及匯入
 
             //社團基本資料
