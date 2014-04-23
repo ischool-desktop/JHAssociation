@@ -184,4 +184,7 @@
   <data name="社團幹部總表_範本" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\社團幹部總表_範本.xls;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="社團活動範本_編號" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\社團活動範本_編號.doc;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

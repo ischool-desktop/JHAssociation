@@ -228,6 +228,21 @@
     </Compile>
     <Compile Include="Report\CadreReport\SocietiesLeaders.cs" />
     <Compile Include="Report\CadreReport\SQLselect_School.cs" />
+    <Compile Include="Report\SpecifyByName_2\ClubActivitiesForm_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\SpecifyByName_2\ClubActivitiesForm_2.designer.cs">
+      <DependentUpon>ClubActivitiesForm_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\SpecifyByName_2\GetConfigData.cs" />
+    <Compile Include="Report\SpecifyByName_2\GetCourseDetail.cs" />
+    <Compile Include="Report\SpecifyByName_2\GetDayList.cs" />
+    <Compile Include="Report\SpecifyByName_2\PrintSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\SpecifyByName_2\PrintSetup.designer.cs">
+      <DependentUpon>PrintSetup.cs</DependentUpon>
+    </Compile>
     <Compile Include="TheCadre\CadreInNewForm\CadreDataRowSchool.cs" />
     <Compile Include="TheCadre\CadreInNewForm\GetAllStudent.cs" />
     <Compile Include="TheCadre\CadreInNewForm\MutiMeritDemerit.cs">
@@ -467,6 +482,12 @@
       <DependentUpon>AssnCourseItem.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\SpecifyByName_2\ClubActivitiesForm_2.resx">
+      <DependentUpon>ClubActivitiesForm_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\SpecifyByName_2\PrintSetup.resx">
+      <DependentUpon>PrintSetup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TheCadre\CadreInNewForm\MutiMeritDemerit.resx">
       <DependentUpon>MutiMeritDemerit.cs</DependentUpon>
     </EmbeddedResource>
@@ -595,6 +616,7 @@
   <ItemGroup>
     <None Include="Resources\社團幹部總表_範本.xls" />
     <None Include="Resources\社團活動範本.doc" />
+    <None Include="Resources\社團活動範本_編號.doc" />
     <None Include="Resources\課程修課學生清單.xls" />
   </ItemGroup>
   <ItemGroup>

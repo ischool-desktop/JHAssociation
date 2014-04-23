@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using FISCA.LogAgent;
 using JHSchool.Association.CadreReport;
+using JHSchool.Association.SpecifyByName_2;
 
 namespace JHSchool.Association
 {
@@ -229,12 +230,20 @@ namespace JHSchool.Association
             //Print["報表"]["社團點名表"].Enable = (AssnAdmin.Instance.SelectedSource.Count > 0 && User.Acl["JHBehavior.Course.Ribbon0210"].Executable);
             Print["報表"].Size = RibbonBarButton.MenuButtonSize.Large;
             Print["報表"].Image = Resources.paste_64;
-            Print["報表"]["社團點名表"].Enable = User.Acl["JHSchool.Association.Report0010"].Executable;
-            Print["報表"]["社團點名表"].Click += delegate
+            //Print["報表"]["社團點名表"].Enable = User.Acl["JHSchool.Association.Report0010"].Executable;
+            //Print["報表"]["社團點名表"].Click += delegate
+            //{
+            //    ClubActivitiesForm ClubActivities = new ClubActivitiesForm();
+            //    ClubActivities.ShowDialog();
+            //};
+
+            Print["報表"]["社團點名表(編號)"].Enable = User.Acl["JHSchool.Association.Report0010"].Executable;
+            Print["報表"]["社團點名表(編號)"].Click += delegate
             {
-                ClubActivitiesForm ClubActivities = new ClubActivitiesForm();
+                ClubActivitiesForm_2 ClubActivities = new ClubActivitiesForm_2();
                 ClubActivities.ShowDialog();
             };
+
             Print["報表"]["社團修課清單"].Enable = User.Acl["JHSchool.Association.Report0020"].Executable;
             Print["報表"]["社團修課清單"].Click += delegate
             {
