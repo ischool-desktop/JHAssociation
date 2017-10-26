@@ -172,7 +172,8 @@
             <summary>
             填入學生學期科目成績
             </summary>
-            <param name="filterRepeat">過濾重讀(重複年級學期)資料</param>
+            <param name="
+                   Repeat">過濾重讀(重複年級學期)資料</param>
         </member>
         <member name="M:SmartSchool.Customization.Data.StudentInformationProvider.FillSemesterMoralScore(System.Collections.Generic.IEnumerable{SmartSchool.Customization.Data.StudentRecord},System.Boolean)">
             <summary>

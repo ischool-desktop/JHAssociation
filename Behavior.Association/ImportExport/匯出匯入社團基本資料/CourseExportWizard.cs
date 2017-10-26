@@ -78,8 +78,8 @@ namespace JHSchool.Association
                 FISCA.Presentation.Controls.MsgBox.Show("必須至少選擇一項匯出欄位!", "欄位空白", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            saveFileDialog1.Filter = "Excel (*.xls)|*.xls|所有檔案 (*.*)|*.*";
+            // 2017/10/26 羿均修改，更新新版Aspose，支援.xlsx檔案的匯入匯出。
+            saveFileDialog1.Filter = "Excel (*.xlsx)|*.xlsx|Excel (*.xls)|*.xls|所有檔案 (*.*)|*.*";
             saveFileDialog1.FileName = "匯出社團基本資料";
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {

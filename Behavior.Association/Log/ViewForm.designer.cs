@@ -467,7 +467,8 @@
             // saveFileDialog1
             // 
             this.saveFileDialog1.FileName = "匯出日誌記錄";
-            this.saveFileDialog1.Filter = "Excel (*.xls)|*.xls";
+            // 2017/10/26 羿均修改，支援xlsx檔
+            this.saveFileDialog1.Filter = "Excel (*.xlsx)|*.xlsx|Excel (*.xls)|*.xls|所有檔案(*.*)|*.*";
             // 
             // labelX4
             // 

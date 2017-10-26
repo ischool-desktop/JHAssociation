@@ -274,7 +274,8 @@ namespace JHSchool.Association
             {
                 DataGridViewExport export = new DataGridViewExport(dataGridViewX1);
                 SaveFileDialog SaveFileDialog1 = new SaveFileDialog();
-                SaveFileDialog1.Filter = "Excel (*.xls)|*.xls|所有檔案 (*.*)|*.*";
+                // 2017/10/26 羿均修改，更新新版Aspose，支援.xlsx檔案的匯入匯出。
+                SaveFileDialog1.Filter = "Excel (*.xlsx)|*.xlsx|Excel (*.xls)|*.xls|所有檔案 (*.*)|*.*";
                 SaveFileDialog1.FileName = "重覆參與社團檢查";
 
                 if (SaveFileDialog1.ShowDialog() == DialogResult.OK)

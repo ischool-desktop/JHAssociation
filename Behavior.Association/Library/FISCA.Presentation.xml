@@ -1397,7 +1397,9 @@
             </summary>
             <param name="navView">瀏覽</param>
         </member>
-        <member name="M:FISCA.Presentation.NLDPanel.SetFilteredSource(System.Collections.Generic.List{System.String})">
+        <member name="M:FISCA.Presentation.NLDPanel.Set
+                
+edSource(System.Collections.Generic.List{System.String})">
             <summary>
             設定經過篩選後的資料集合
             </summary>

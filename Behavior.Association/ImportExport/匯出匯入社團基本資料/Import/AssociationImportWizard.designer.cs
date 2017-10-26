@@ -155,8 +155,8 @@ namespace JHSchool.Association
             this.SuspendLayout();
             // 
             // SelectSourceFileDialog
-            // 
-            this.SelectSourceFileDialog.Filter = "Excel 檔案 (*.xls)| *.xls";
+            // 2017/10/26 羿均修改，更新新版Aspose，支援.xlsx檔案的匯入匯出。
+            this.SelectSourceFileDialog.Filter = "Excel 檔案 (*.xlsx)| *.xlsx|Excel (*.xls)|*.xls|所有檔案(*.*)|*.*";
             // 
             // ImportWizard
             // 
@@ -992,8 +992,8 @@ namespace JHSchool.Association
             this.ctlerrors.ContainerControl = this;
             // 
             // BackupDialog
-            // 
-            this.BackupDialog.Filter = "Excel 檔案 (*.xls)| *.xls";
+            // 2017/10/26 羿均修改，更新新版Aspose，支援.xlsx檔案的匯入匯出。
+            this.BackupDialog.Filter = "Excel 檔案 (*.xlsx)| *.xlsx|Excel (*.xls)|*.xls|所有檔案(*.*)|*.*";
             // 
             // AssociationImportWizard
             // 

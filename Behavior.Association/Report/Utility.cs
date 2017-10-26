@@ -37,7 +37,7 @@ namespace JHSchool.Association.Report
 
             try
             {
-                wb.Save(path, FileFormatType.Excel2003);
+                wb.Save(path, FileFormatType.Excel97To2003);
                 System.Diagnostics.Process.Start(path);
             }
             catch (Exception e)
@@ -52,7 +52,7 @@ namespace JHSchool.Association.Report
                 {
                     try
                     {
-                        wb.Save(sd.FileName, FileFormatType.Excel2003);
+                        wb.Save(sd.FileName, FileFormatType.Excel97To2003);
                         System.Diagnostics.Process.Start(sd.FileName);
                     }
                     catch

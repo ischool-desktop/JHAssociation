@@ -1,12 +1,12 @@
 ﻿using FISCA;
+using FISCA.LogAgent;
 using FISCA.Presentation;
 using Framework;
+using JHSchool.Association.CadreReport;
 using JHSchool.Association.Properties;
+using JHSchool.Association.SpecifyByName_2;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using FISCA.LogAgent;
-using JHSchool.Association.CadreReport;
-using JHSchool.Association.SpecifyByName_2;
 
 namespace JHSchool.Association
 {

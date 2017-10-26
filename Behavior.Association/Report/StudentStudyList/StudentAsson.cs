@@ -107,8 +107,9 @@ namespace JHSchool.Association
                 book.Worksheets[0].Cells[seq, 6].PutValue("第" + Addpage + "頁/共" + _CourseList.Count + "頁");
 
                 seq++;
-
-                book.Worksheets[0].HPageBreaks.Add(seq, 0);
+                // 2017/10/26 羿均修改為新版寫法
+                book.Worksheets[0].HorizontalPageBreaks.Add(seq,0);
+                //book.Worksheets[0].HPageBreaks.Add(seq, 0);
 
                 //清掉範本
                 book.Worksheets.RemoveAt("Temp");
@@ -118,8 +119,8 @@ namespace JHSchool.Association
             {
                 FISCA.Presentation.MotherForm.SetStatusBarMessage("請選擇儲存位置", 100);
                 SaveFileDialog SaveFileDialog1 = new SaveFileDialog();
-
-                SaveFileDialog1.Filter = "Excel (*.xls)|*.xls|所有檔案 (*.*)|*.*";
+                // 2017/10/26 羿均修改，更新新版Aspose，支援.xlsx檔案的匯入匯出。
+                SaveFileDialog1.Filter = "Excel (*.xlsx)|*.xlsx|Excel (*.xls)|*.xls|所有檔案 (*.*)|*.*";
                 SaveFileDialog1.FileName = "社團修課清單";
 
                 if (SaveFileDialog1.ShowDialog() == DialogResult.OK)

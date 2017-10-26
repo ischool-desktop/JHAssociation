@@ -624,7 +624,7 @@ namespace JHSchool.Behavior.ImportExport
                 {
                     SaveFileDialog sd = new SaveFileDialog();
                     sd.Title = "另存新檔";
-                    sd.FileName = Path.GetFileNameWithoutExtension(path) + ".xls";
+                    sd.FileName = Path.GetFileNameWithoutExtension(path) + ".xlsx";
                     sd.Filter = "Excel檔案 (*.xls)|*.xls|所有檔案 (*.*)|*.*";
                     if (sd.ShowDialog() == DialogResult.OK)
                     {
@@ -640,7 +640,7 @@ namespace JHSchool.Behavior.ImportExport
                         }
                     }
                 }
-                report.Save(path, FileFormatType.Excel2003);
+                report.Save(path, FileFormatType.Excel97To2003);
                 #endregion
                 SmartSchool.Customization.PlugIn.Global.SetStatusBarMessage(_Title + "完成。");
 

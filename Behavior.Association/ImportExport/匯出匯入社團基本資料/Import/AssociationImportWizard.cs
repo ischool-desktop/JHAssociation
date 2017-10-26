@@ -40,6 +40,9 @@ namespace JHSchool.Association
             _context = new WizardContext();
             _data_source = new ImportDataAccess();
             _context.DataSource = _data_source;
+
+         
+
         }
 
         private WizardContext Context
@@ -718,7 +721,8 @@ namespace JHSchool.Association
         {
             FileInfo objFile = new FileInfo(Context.SourceFile);
             string dir = objFile.DirectoryName;
-            string file = objFile.Name.Replace(".xls", "_備份.xls");
+            // 2017/10/26 羿均修改，更新新版Aspose，預設備份檔案類型為.xlsx。
+            string file = objFile.Name.Replace(".xlsx", "_備份.xlsx");
 
             BackupDialog.InitialDirectory = dir;
             BackupDialog.FileName = file;

@@ -61,7 +61,7 @@ namespace JHSchool.Association.CadreReport
 
             Workbook template = new Workbook();
             template.Worksheets.Clear();
-            template.Open(new MemoryStream(Properties.Resources.社團幹部總表_範本), FileFormatType.Excel2003);
+            template.Open(new MemoryStream(Properties.Resources.社團幹部總表_範本), FileFormatType.Excel97To2003);
 
             Worksheet ptws = template.Worksheets[0];
             //建立Range
@@ -109,7 +109,9 @@ namespace JHSchool.Association.CadreReport
                         if (cutStudentIndex == cutPageIndex)
                         {
                             cutStudentIndex = 1;
-                            ws.HPageBreaks.Add(studentCount, 7);
+                            // 2017/10/26 羿均修改為新版寫法
+                            ws.HorizontalPageBreaks.Add(studentCount, 7);
+                            //ws.HPageBreaks.Add(studentCount, 7);
                             ws.Cells.CreateRange(studentCount, 2, false).Copy(ClassHeader);
                             studentCount += 2;
                         }
@@ -135,16 +137,17 @@ namespace JHSchool.Association.CadreReport
                     }
                 }
                 //ws.Cells.CreateRange(studentCount - 1, 0, 1, 8).SetOutlineBorder(BorderType.BottomBorder, CellBorderType.Medium, Color.Black);
-                ws.HPageBreaks.Add(studentCount, 7);
+                
+                // 2017/10/26 羿均修改為新版寫法
+                //ws.HPageBreaks.Add(studentCount, 7);
+                ws.HorizontalPageBreaks.Add(studentCount, 7);
             }
 
             string path = Path.Combine(Application.StartupPath, "Reports");
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
-            path = Path.Combine(path, "社團幹部總表" + ".xlt");
+            path = Path.Combine(path, "社團幹部總表" + ".xlsx");
             e.Result = new object[] { "社團幹部總表", path, wb };
-
-
 
         }
 
@@ -201,10 +204,10 @@ namespace JHSchool.Association.CadreReport
                         }
                     }
                 }
-
+                // 2017/10/26 羿均修改，更新新版Aspose，預設存檔類型為.xlsx。
                 try
                 {
-                    wb.Save(path, FileFormatType.Excel2003);
+                    wb.Save(path, SaveFormat.Xlsx);
                     FISCA.Presentation.MotherForm.SetStatusBarMessage(reportName + "產生完成");
                     System.Diagnostics.Process.Start(path);
                 }
@@ -212,13 +215,13 @@ namespace JHSchool.Association.CadreReport
                 {
                     SaveFileDialog sd = new SaveFileDialog();
                     sd.Title = "另存新檔";
-                    sd.FileName = reportName + ".xls";
-                    sd.Filter = "Excel檔案 (*.xls)|*.xls|所有檔案 (*.*)|*.*";
+                    sd.FileName = reportName + ".xlsx";
+                    sd.Filter = "Excel檔案 (*.xlsx)|*.xlsx|所有檔案 (*.*)|*.*";
                     if (sd.ShowDialog() == DialogResult.OK)
                     {
                         try
                         {
-                            wb.Save(sd.FileName, FileFormatType.Excel2003);
+                            wb.Save(sd.FileName, SaveFormat.Xlsx);
                         }
                         catch
                         {

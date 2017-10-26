@@ -363,15 +363,15 @@ namespace JHSchool.Association
 
             SaveFileDialog sd = new System.Windows.Forms.SaveFileDialog();
             sd.Title = "另存新檔";
-            sd.FileName = "社團輸入狀況檢查(匯出).xls";
-            sd.Filter = "Excel檔案 (*.xls)|*.xls|所有檔案 (*.*)|*.*";
+            sd.FileName = "社團輸入狀況檢查(匯出)";
+            // 2017/10/26 羿均修改，更新新版Aspose，支援.xlsx檔案的匯入匯出。
+            sd.Filter = "Excel檔案 (*.xlsx)|*.xlsx|Excel (*.xls)|*.xls|所有檔案 (*.*)|*.*";
             if (sd.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    wb.Save(sd.FileName, FileFormatType.Excel2003);
+                    wb.Save(sd.FileName);
                     System.Diagnostics.Process.Start(sd.FileName);
-
                 }
                 catch
                 {

@@ -99,11 +99,11 @@ namespace JHSchool.Association
             #region Sheet2(建立範本)
 
             sheet2.Cells[0, 0].PutValue(School.ChineseName);//標題
-            sheet2.Cells[0, 0].Style.HorizontalAlignment = TextAlignmentType.Center;
+            sheet2.Cells[0, 0].GetStyle().HorizontalAlignment = TextAlignmentType.Center;
 
             string TitleCourseName = string.Format("社團名稱：{0}　授課教師：{1}", "　", "　");
             sheet2.Cells[1, 0].PutValue(TitleCourseName);//標題
-            sheet2.Cells[1, 0].Style.HorizontalAlignment = TextAlignmentType.Center;
+            sheet2.Cells[1, 0].GetStyle().HorizontalAlignment = TextAlignmentType.Center;
 
             sheet2.Cells[2, 0].PutValue("班級");
             sheet2.Cells[2, 1].PutValue("座號");
@@ -119,8 +119,8 @@ namespace JHSchool.Association
             {
                 CountSetup1 = CountSetup + 4;
                 sheet2.Cells[2, CountSetup1].PutValue("成績");
-                sheet2.Cells[2, CountSetup1].Style = sheet2.Cells[2, 0].Style;
-                sheet2.Cells[3, CountSetup1].Style = sheet2.Cells[3, 0].Style;
+                sheet2.Cells[2, CountSetup1].SetStyle(sheet2.Cells[2, 0].GetStyle());
+                sheet2.Cells[3, CountSetup1].SetStyle(sheet2.Cells[3, 0].GetStyle());
                 CountSetup++;
             }
 
@@ -128,16 +128,16 @@ namespace JHSchool.Association
             {
                 CountSetup2 = CountSetup + 4;
                 sheet2.Cells[2, CountSetup2].PutValue("努力程度");
-                sheet2.Cells[2, CountSetup2].Style = sheet2.Cells[2, 0].Style;
-                sheet2.Cells[3, CountSetup2].Style = sheet2.Cells[3, 0].Style;
+                sheet2.Cells[2, CountSetup2].SetStyle(sheet2.Cells[2, 0].GetStyle());
+                sheet2.Cells[3, CountSetup2].SetStyle(sheet2.Cells[3, 0].GetStyle());
                 CountSetup++;
             }
             if (newAEInc.UseText)
             {
                 CountSetup3 = CountSetup + 4;
                 sheet2.Cells[2, CountSetup3].PutValue("文字評量");
-                sheet2.Cells[2, CountSetup3].Style = sheet2.Cells[2, 0].Style;
-                sheet2.Cells[3, CountSetup3].Style = sheet2.Cells[3, 0].Style;
+                sheet2.Cells[2, CountSetup3].SetStyle(sheet2.Cells[2, 0].GetStyle());
+                sheet2.Cells[3, CountSetup3].SetStyle(sheet2.Cells[3, 0].GetStyle());
                 CountSetup++;
             }
 
@@ -240,7 +240,9 @@ namespace JHSchool.Association
                 sheet1.Cells[RowIndex, sheet1.Cells.MaxColumn].PutValue("列印日期:" + DateTime.Now.ToShortDateString());
                 //列印分隔線
                 RowIndex++;
-                sheet1.HPageBreaks.Add(RowIndex, 0);
+                // 2017/10/26 羿均修改為新版Aspose寫法
+                //sheet1.HPageBreaks.Add(RowIndex, 0);
+                sheet1.HorizontalPageBreaks.Add(RowIndex, 0);
                 sheet1.AutoFitColumns();
                 sheet1.AutoFitRows();
             } 
@@ -260,8 +262,8 @@ namespace JHSchool.Association
             {
                 FISCA.Presentation.MotherForm.SetStatusBarMessage("請選擇儲存位置", 100);
                 SaveFileDialog SaveFileDialog1 = new SaveFileDialog();
-
-                SaveFileDialog1.Filter = "Excel (*.xls)|*.xls|所有檔案 (*.*)|*.*";
+                // 2017/10/26 羿均修改，更新新版Aspose，支援.xlsx檔案的匯入匯出。
+                SaveFileDialog1.Filter = "Excel (*.xlsx)|*.xlsx|Excel (*.xls)|*.xls|所有檔案 (*.*)|*.*";
                 SaveFileDialog1.FileName = "社團成績校對單";
 
                 if (SaveFileDialog1.ShowDialog() == DialogResult.OK)

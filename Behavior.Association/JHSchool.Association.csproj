@@ -57,10 +57,8 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aspose.Cells, Version=4.3.0.0, Culture=neutral, PublicKeyToken=9a40d5a4b59e5256, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Library\Aspose.Cells.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Aspose.Cells_201402">
+      <HintPath>Library\Aspose.Cells_201402.dll</HintPath>
     </Reference>
     <Reference Include="Aspose.Words, Version=4.4.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -136,10 +134,9 @@
       <HintPath>Library\IntelliSchool.DSA.ClientFramework.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="JHSchool, Version=1.0.3.13, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="JHSchool, Version=1.0.4.11, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\JHSchool.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="JHSchool.Data, Version=2.0.0.2, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -273,9 +270,7 @@
       <DependentUpon>ClassAssnDivide.cs</DependentUpon>
     </Compile>
     <Compile Include="ClassExtendControls\IntoAssociationGroups\DivideOBJ.cs" />
-    <Compile Include="DataGridViewComboBoxExColumn.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="DataGridViewComboBoxExColumn.cs" />
     <Compile Include="Log\CompleteForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -690,8 +685,6 @@
     <None Include="Resources\stamp_paper_fav_128.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Library\Aspose.Cells.dll" />
-    <Content Include="Library\Aspose.Cells.xml" />
     <Content Include="Library\Aspose.Words.dll" />
     <Content Include="Library\Aspose.Words.xml" />
     <Content Include="Library\Campus.Windows.dll" />
@@ -734,7 +727,6 @@
     <Content Include="Library\JHSchool.dll" />
     <Content Include="Library\JHSchool.Evaluation.dll" />
     <Content Include="Library\JHSchool.Evaluation.pdb" />
-    <Content Include="Library\JHSchool.pdb" />
     <Content Include="Library\K12.Data.dll" />
     <Content Include="Library\K12.Data.pdb" />
     <Content Include="Library\K12.Data.xml" />

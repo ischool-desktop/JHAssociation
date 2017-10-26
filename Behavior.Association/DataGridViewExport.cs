@@ -45,8 +45,8 @@ namespace JHSchool.Association
         {
             try
             {
-                _workbook.Save(path, FileFormatType.Excel2003);
-
+                // 2017/10/26 羿均修改，支援.xlsx檔案的匯入匯出。
+                _workbook.Save(path);
             }
             catch (Exception ex)
             {
