@@ -392,18 +392,6 @@ namespace JHSchool.Association
                 Check["社團幹部登錄"].Enable = (AssnAdmin.Instance.SelectedSource.Count == 1 && User.Acl["JHSchool.Association.Ribbon00145.1"].Executable);
             };
 
-
-
-            //RibbonBarItem SettleAccount = AssnAdmin.Instance.RibbonBarItems["結算"];
-            //#region 結算
-            //SettleAccount["社團成績結算"].Enable = User.Acl["JHSchool.Association.Ribbon0060"].Executable;
-            //SettleAccount["社團成績結算"].Click += delegate
-            //{
-            //    SettleAccountsForm settle = new SettleAccountsForm();
-            //    settle.ShowDialog();
-            //};
-            //#endregion
-
             #endregion
 
             #region 班級RibbonBar
@@ -449,7 +437,7 @@ namespace JHSchool.Association
             ribbon.Add(new Framework.Security.RibbonFeature("JHSchool.Association.Ribbon0030", "社團評量設定"));
             ribbon.Add(new Framework.Security.RibbonFeature("JHSchool.Association.Ribbon0040", "未參與社團檢查"));
             ribbon.Add(new Framework.Security.RibbonFeature("JHSchool.Association.Ribbon0050", "重覆參與社團檢查"));
-            ribbon.Add(new Framework.Security.RibbonFeature("JHSchool.Association.Ribbon0060", "社團成績結算"));
+            ribbon.Add(new Framework.Security.RibbonFeature("JHSchool.Association.Ribbon0060", "社團成績期末結算"));
             ribbon.Add(new Framework.Security.RibbonFeature("JHSchool.Association.Ribbon0070", "社團評量輸入檢查"));
             ribbon.Add(new Framework.Security.RibbonFeature("JHSchool.Association.Ribbon00120", "變更學生參與社團"));
             ribbon.Add(new Framework.Security.RibbonFeature("JHSchool.Association.Ribbon00130", "上課地點管理"));
@@ -477,7 +465,7 @@ namespace JHSchool.Association
             ribbon3.Add(new Framework.Security.RibbonFeature("JHSchool.Association.Ribbon0110", "匯入社團參與學生"));
 
             Framework.Security.Catalog Studentdetail = Framework.Security.RoleAclSource.Instance["學生"]["資料項目"];
-            Studentdetail.Add(new Framework.Security.DetailItemFeature("JHSchool.Association.Detail0030", "社團記錄"));
+            Studentdetail.Add(new Framework.Security.DetailItemFeature("JHSchool.Association.Detail0030", "社團成績_高雄"));
             Framework.Security.Catalog sribbon1 = Framework.Security.RoleAclSource.Instance["學生"]["功能按鈕"];
             sribbon1.Add(new Framework.Security.RibbonFeature("JHSchool.Student.Ribbon0165", "匯出社團活動表現"));
             Framework.Security.Catalog sribbon2 = Framework.Security.RoleAclSource.Instance["學生"]["功能按鈕"];

@@ -15,7 +15,7 @@ using FISCA.DSAUtil;
 
 namespace JHSchool.Association
 {
-    [FCode("JHSchool.Association.Detail0030", "社團記錄")]
+    [FCode("JHSchool.Association.Detail0030", "社團成績_高雄")]
     public partial class StudentSettleAccountsAssnItem : DetailContentBase
     {
 
@@ -48,7 +48,7 @@ namespace JHSchool.Association
         {
             InitializeComponent();
 
-            Group = "社團記錄";
+            Group = "社團成績_高雄";
 
             UserPermission = User.Acl[FCode.GetCode(GetType())];
 

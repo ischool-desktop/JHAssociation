@@ -71,6 +71,7 @@ namespace JHSchool.Association
                     if (_CadreRecord != null && _CadreRecord.UID != "")
                         _CadreRecordDel = _CadreRecord;
                     _CadreRecord = null; //清空原Record
+
                 }
                 else
                 {
@@ -156,6 +157,14 @@ namespace JHSchool.Association
                                 _CadreRecord.Semester = _DefSemester.ToString(); //預設學期
                                 _CadreRecord.StudentID = s.StudedntID; //學生ID
                                 _CadreRecord.Text = _Context._AssociationRecord.Name; //社團幹部不輸入內容
+                                if (_Context.CadreRatioList.Contains(_CadreRecord.CadreName))
+                                {
+                                    _CadreRecord.Ratio_Order = true;
+                                }
+                                else
+                                {
+                                    _CadreRecord.Ratio_Order = false;
+                                }
                             }
                         }
                     }

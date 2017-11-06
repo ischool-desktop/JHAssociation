@@ -48,7 +48,17 @@ namespace JHSchool.Association
         private Queue<string> timerList2 = new Queue<string>();
 
         private List<string> CadreTypeList = new List<string>();
-        
+
+        /// <summary>
+        /// 設定檔案
+        /// </summary>
+        string CadreConfigList = "幹部模組_幹部名稱清單";
+
+        /// <summary>
+        /// 設定檔案
+        /// </summary>
+        string CadreConfigSubLine = "幹部名稱管理畫面_輸入敘獎資料";
+
         /// <summary>
         /// 傳入幹部型態(班級幹部/學校幹部/社團幹部/空字串為所有類型)
         /// </summary>
@@ -69,11 +79,11 @@ namespace JHSchool.Association
 
             timerString();
 
-            K12.Data.Configuration.ConfigData DateConfig = K12.Data.School.Configuration["幹部模組_幹部名稱清單"];
+            K12.Data.Configuration.ConfigData DateConfig = K12.Data.School.Configuration[CadreConfigList];
             //DateConfig["幹部名稱_輸入敘獎資料"] = KeyInMerit.Checked.ToString();
-            if (DateConfig["幹部名稱管理畫面_輸入敘獎資料"] != "")
+            if (DateConfig[CadreConfigSubLine] != "")
             {
-                KeyInMerit.Checked = bool.Parse(DateConfig["幹部名稱管理畫面_輸入敘獎資料"]);
+                KeyInMerit.Checked = bool.Parse(DateConfig[CadreConfigSubLine]);
             }
 
             CodeDic = cfm.GetDisciplineReason();
@@ -103,14 +113,12 @@ namespace JHSchool.Association
                     row.Cells[colCadreType.Index].Value = each.NameType;
                     row.Cells[colCadreIndex.Index].Value = each.Index.ToString();
                     row.Cells[colCadreName.Index].Value = each.CadreName;
-                    if (each.Number == 0)
-                        row.Cells[colNumber.Index].Value = 1;
-                    else
-                        row.Cells[colNumber.Index].Value = each.Number;
+                    row.Cells[colNumber.Index].Value = each.Number;
                     row.Cells[colMeritA.Index].Value = each.MeritA;
                     row.Cells[colMeritB.Index].Value = each.MeritB;
                     row.Cells[colMeritC.Index].Value = each.MeritC;
                     row.Cells[colMeritReason.Index].Value = each.Reason;
+                    row.Cells[colRatioOrder.Index].Value = each.Ratio_Order;
                     dataGridViewX1.Rows.Add(row);
                 }
             }
@@ -118,7 +126,7 @@ namespace JHSchool.Association
             ChangeKeyInMerit();
 
             DataListener.Reset();
-            DataListener.ResumeListen(); 
+            DataListener.ResumeListen();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -148,6 +156,7 @@ namespace JHSchool.Association
                     obj.MeritC = check.CheckDataGridViewNotInt(eachRow.Cells[colMeritC.Index]);
                     obj.Reason = "" + eachRow.Cells[colMeritReason.Index].Value;
                 }
+                obj.Ratio_Order = bool.Parse("" + eachRow.Cells[colRatioOrder.Index].Value); //是否參與比序
 
                 InsertList.Add(obj);
             }
@@ -159,7 +168,7 @@ namespace JHSchool.Association
                 accessHelper.DeletedValues(DeleteList.ToArray());
                 accessHelper.InsertValues(InsertList.ToArray());
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Campus.Windows.MsgBox.Show("新增資料錯誤!!\n" + ex.Message);
             }
@@ -217,7 +226,7 @@ namespace JHSchool.Association
             //幹部名稱
             check.CheckCellIsEmptyError(eachRow.Cells[colCadreName.Index], "錯誤:幹部名稱必須填入內容!!");
 
-            check.CheckCellIsIntEmpty(eachRow.Cells[colNumber.Index], "錯誤:擔任人數內容非數字"); 
+            check.CheckCellIsIntEmpty(eachRow.Cells[colNumber.Index], "錯誤:擔任人數內容非數字");
             //內容不是空的才檢查
             check.CheckCellIsIntEmpty(eachRow.Cells[colMeritA.Index], "錯誤:大功內容非數字"); //大功
             check.CheckCellIsIntEmpty(eachRow.Cells[colMeritB.Index], "錯誤:小功內容非數字"); //小功
@@ -283,7 +292,7 @@ namespace JHSchool.Association
 
             if (KeyInMerit.Checked) //如果提供輸入預設獎勵清單
             {
-                requiredHeaders = new List<string>(new string[] { "幹部類型", "排序", "幹部名稱", "擔任人數", "大功", "小功", "嘉獎", "獎勵事由" });
+                 requiredHeaders = new List<string>(new string[] { "幹部類型", "排序", "幹部名稱", "擔任人數", "大功", "小功", "嘉獎", "獎勵事由", "參與比序" });
 
                 #region 匯入包含敘獎內容
 
@@ -292,7 +301,7 @@ namespace JHSchool.Association
                 Worksheet ws = wb.Worksheets[0];
 
                 //蒐集excel清單上的標題欄位
-                for (int i = 0; i <= 7; i++)
+                for (int i = 0; i <= 8; i++)
                 {
                     string header = ws.Cells[0, i].StringValue;
                     if (requiredHeaders.Contains(header))
@@ -353,16 +362,34 @@ namespace JHSchool.Association
 
                     obj.Number = check.CheckNotIntNumber_1(ws.Cells[x, headers["擔任人數"]]);
 
+                    //參與比序
+                    if (!string.IsNullOrEmpty("" + ws.Cells[x, headers["參與比序"]].Value))
+                    {
+                         if ("" + ws.Cells[x, headers["參與比序"]].Value == "是")
+                         {
+                              obj.Ratio_Order = true;
+                         }
+                         else
+                         {
+                              Campus.Windows.MsgBox.Show("參與比序必須為[是]或[空值]");
+                              return;
+                         }
+                    }
+                    else
+                    {
+                         obj.Ratio_Order = false;
+                    }
+
                     InsertList.Add(obj);
                 }
                 #endregion
             }
             else
             {
-                requiredHeaders = new List<string>(new string[] { "幹部類型", "排序", "幹部名稱", "擔任人數" });
-               
+                 requiredHeaders = new List<string>(new string[] { "幹部類型", "排序", "幹部名稱", "擔任人數", "參與比序" });
+
                 #region 不匯入敘獎內容
-                
+
                 //欄位標題的索引
                 Dictionary<string, int> headers = new Dictionary<string, int>();
                 Worksheet ws = wb.Worksheets[0];
@@ -413,8 +440,19 @@ namespace JHSchool.Association
 
                     obj.Number = check.CheckNotIntNumber_1(ws.Cells[x, headers["擔任人數"]]);
 
+                    //參與比序
+                    if ("" + ws.Cells[x, headers["參與比序"]].Value != "是" || !string.IsNullOrEmpty("" + ws.Cells[x, headers["參與比序"]].Value))
+                    {
+                         Campus.Windows.MsgBox.Show("參與比序必須為[是]或[空值]");
+                         return;
+                    }
+                    else
+                    {
+                         obj.Ratio_Order = true;
+                    }
+
                     InsertList.Add(obj);
-                } 
+                }
                 #endregion
             }
 
@@ -427,13 +465,13 @@ namespace JHSchool.Association
             }
             catch (Exception ex)
             {
-                Campus.Windows.MsgBox.Show("新增資料錯誤!!" + ex.Message);
+                Campus.Windows.MsgBox.Show("新增資料錯誤!!\n" + ex.Message);
             }
 
             Campus.Windows.MsgBox.Show("匯入成功!!");
 
-            SetData(); 
-            #endregion            
+            SetData();
+            #endregion
         }
 
         #region 提示訊息的切換
@@ -452,11 +490,11 @@ namespace JHSchool.Association
 
         private void timerString()
         {
-            timerList2.Enqueue("說明：(舊有)幹部清單已提供匯出，可於匯出整理後匯入新畫面清單中。");
+            timerList2.Enqueue("說明：幹部比序欄位,為免試入學超額比序使用。");
             timerList2.Enqueue("說明：幹部類型分為(班級幹部,社團幹部,學校幹部)。");
             timerList2.Enqueue("說明：(獎勵事由)欄位可直接輸入(獎勵事由)代碼。");
             timerList2.Enqueue("說明：排序是依(幹部名稱)分類後才依(排序)數字進行排序。");
-        } 
+        }
 
         #endregion
 
@@ -501,18 +539,11 @@ namespace JHSchool.Association
         //當設定被勾選
         private void KeyInMerit_CheckedChanged(object sender, EventArgs e)
         {
-            K12.Data.Configuration.ConfigData DateConfig = K12.Data.School.Configuration["幹部模組_幹部名稱清單"];
-            DateConfig["幹部名稱管理畫面_輸入敘獎資料"] = KeyInMerit.Checked.ToString();
+            K12.Data.Configuration.ConfigData DateConfig = K12.Data.School.Configuration[CadreConfigList];
+            DateConfig[CadreConfigSubLine] = KeyInMerit.Checked.ToString();
             DateConfig.Save();
 
             ChangeKeyInMerit();
-        }
-
-        //舊有幹部資料畫面
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            OldCadreSetup Tcn = new OldCadreSetup();
-            Tcn.ShowDialog();
         }
 
         //檢查新增之Row是否未輸入資料
@@ -542,7 +573,7 @@ namespace JHSchool.Association
         {
             if (DataGridViewDataInChange)
             {
-                DialogResult dr = FISCA.Presentation.Controls.MsgBox.Show("資料已被修改,請確認是否要離開?", MessageBoxButtons.YesNo, MessageBoxDefaultButton.Button2);
+                DialogResult dr = FISCA.Presentation.Controls.MsgBox.Show("資料已修改,是否要離開?", MessageBoxButtons.YesNo, MessageBoxDefaultButton.Button2);
                 if (dr == DialogResult.Yes)
                 {
                     this.Close();

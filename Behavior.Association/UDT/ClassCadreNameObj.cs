@@ -36,7 +36,6 @@ namespace JHSchool.Association
         [Field(Field = "Number", Indexed = false)]
         public int Number { get; set; }
 
-
         /// <summary>
         /// 敘獎 - 大功
         /// </summary>
@@ -60,5 +59,11 @@ namespace JHSchool.Association
         /// </summary>
         [Field(Field = "Reason", Indexed = false)]
         public string Reason { get; set; }
+
+        /// <summary>
+        /// 是否參與比序
+        /// </summary>
+        [Field(Field = "ratio_order", Indexed = false)]
+        public bool Ratio_Order { get; set; }
     }
 }

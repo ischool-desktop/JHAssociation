@@ -33,6 +33,8 @@ namespace JHSchool.Association
         private int DefSchoolYear { get; set; }
         private int DefSemester { get; set; }
 
+        internal List<string> CadreRatioList { get; set; }
+
         //社團ID
         string _AssociationID;
         public K12.Data.CourseRecord _AssociationRecord;
@@ -178,6 +180,20 @@ namespace JHSchool.Association
 
             //取得社團幹部類型
             List<ClassCadreNameObj> SchoolCadreNameList = _accessHelper.Select<ClassCadreNameObj>(string.Format("NameType = '{0}'", "社團幹部"));
+
+            //取得幹部比序清單
+            CadreRatioList = new List<string>();
+            foreach (ClassCadreNameObj each in SchoolCadreNameList)
+            {
+                if (each.Ratio_Order)
+                {
+                    if (!CadreRatioList.Contains(each.CadreName))
+                    {
+                        CadreRatioList.Add(each.CadreName);
+                    }
+                }
+            }
+
 
             SchoolCadreNameList = SortCadreNameList(SchoolCadreNameList);
 

@@ -51,5 +51,11 @@ namespace JHSchool.Association
         /// </summary>
         [Field(Field = "Text", Indexed = false)]
         public string Text { get; set; }
+
+        /// <summary>
+        /// 是否參與比序
+        /// </summary>
+        [Field(Field = "ratio_order", Indexed = false)]
+        public bool Ratio_Order { get; set; }
     }
 }
