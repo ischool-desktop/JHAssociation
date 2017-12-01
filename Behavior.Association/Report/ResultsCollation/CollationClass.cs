@@ -90,9 +90,11 @@ namespace JHSchool.Association
 
             //取得設定檔狀態
 
-            Workbook wb = new Workbook();
+            // 2017/12/1，羿均，aspose 新寫法↘
+            Workbook wb = new Workbook(new MemoryStream(Resources.社團成績校對單));
 
-            wb.Open(new MemoryStream(Resources.社團成績校對單));
+            //Workbook wb = new Workbook();        已過時
+            //wb.Open(new MemoryStream(Resources.社團成績校對單));
 
             Worksheet sheet2 = wb.Worksheets["Sheet2"];
 
@@ -172,8 +174,10 @@ namespace JHSchool.Association
                 {
                     continue;
                 }
-
-                sheet1.Cells.CreateRange(RowIndex, 3, false).Copy(Range1);
+                // 2017/12/01 ，aspose更新，新寫法
+                //sheet1.Cells.CreateRange(RowIndex, 3, false).Copy(Range1);
+                sheet1.Cells.CreateRange(RowIndex, 3, false).CopyStyle(Range1);
+                sheet1.Cells.CreateRange(RowIndex, 3, false).CopyValue(Range1);
 
                 string CourseTeacherName = "";
                 if (cr.MajorTeacherNickname != "")
@@ -196,7 +200,9 @@ namespace JHSchool.Association
                 foreach (JHStudentRecord CrStud in StudList)
                 {
                     #region 填入修課學生
-                    sheet1.Cells.CreateRange(RowIndex, 1, false).Copy(Range2);
+                    // 2017/12/01 ，aspose更新，新寫法
+                    //sheet1.Cells.CreateRange(RowIndex, 1, false).Copy(Range2);
+                    sheet1.Cells.CreateRange(RowIndex, 1, false).CopyStyle(Range2);
 
                     if (CrStud.Class != null)
                     {

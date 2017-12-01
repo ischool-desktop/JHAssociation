@@ -23,9 +23,13 @@ namespace JHSchool.Association
             /*出現狀態Bar的訊息*/
             FISCA.Presentation.MotherForm.SetStatusBarMessage("處理中，請稍候...", 0);
 
-            Workbook book = new Workbook();
-            book.Worksheets.Clear();
-            book.Open(new MemoryStream(Resources.課程修課學生清單));
+            // 2017/12/1，羿均，aspose 新寫法↘
+            Workbook book = new Workbook(new MemoryStream(Resources.課程修課學生清單));
+
+            //Workbook book = new Workbook();
+            //book.Worksheets.Clear();
+            //book.Open(new MemoryStream(Resources.課程修課學生清單));
+
             /*新增一個List接所選取的課程*/
 
             List<JHCourseRecord> _CourseList = new List<JHCourseRecord>();
@@ -44,7 +48,11 @@ namespace JHSchool.Association
             foreach (JHCourseRecord cr in _CourseList)
             {
 
-                book.Worksheets["Sheet1"].Cells.CreateRange(seq, 4, false).Copy(_Range1);
+                //2017/12/01 羿均修改，aspose新寫法
+                book.Worksheets["Sheet1"].Cells.CreateRange(seq, 4, false).CopyStyle(_Range1);
+                book.Worksheets["Sheet1"].Cells.CreateRange(seq, 4, false).CopyValue(_Range1);
+                //book.Worksheets["Sheet1"].Cells.CreateRange(seq, 4, false).Copy(_Range1);
+
                 //課程的標題檔
                 book.Worksheets[0].Cells[seq, 0].PutValue(cr.SchoolYear + "學年度第" + cr.Semester + "學期 社團修課學生清單");
 
@@ -77,7 +85,11 @@ namespace JHSchool.Association
 
                 foreach (JHStudentRecord stdrec in StudentList)
                 {
-                    book.Worksheets["Sheet1"].Cells.CreateRange(seq, 1, false).Copy(_Range2);
+                    //2017/12/01 羿均修改，aspose新寫法
+                    book.Worksheets["Sheet1"].Cells.CreateRange(seq, 1, false).CopyValue(_Range2);
+                    book.Worksheets["Sheet1"].Cells.CreateRange(seq, 1, false).CopyStyle(_Range2);
+                    //book.Worksheets["Sheet1"].Cells.CreateRange(seq, 1, false).Copy(_Range2);
+
                     //取得所屬班級 
                     if (stdrec.Class != null)
                     {
@@ -102,8 +114,11 @@ namespace JHSchool.Association
                 //seq++;
 
                 Addpage++;
+                //2017/12/01 羿均修改，aspose新寫法
+                book.Worksheets["Sheet1"].Cells.CreateRange(seq, 1, false).CopyValue(_Range3);
+                book.Worksheets["Sheet1"].Cells.CreateRange(seq, 1, false).CopyStyle(_Range3);
+                //book.Worksheets["Sheet1"].Cells.CreateRange(seq, 1, false).Copy(_Range3);
 
-                book.Worksheets["Sheet1"].Cells.CreateRange(seq, 1, false).Copy(_Range3);
                 book.Worksheets[0].Cells[seq, 6].PutValue("第" + Addpage + "頁/共" + _CourseList.Count + "頁");
 
                 seq++;
