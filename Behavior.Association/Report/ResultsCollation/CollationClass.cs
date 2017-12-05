@@ -90,7 +90,7 @@ namespace JHSchool.Association
 
             //取得設定檔狀態
 
-            // 2017/12/1，羿均，aspose 新寫法↘
+            // 2017/12/1，羿均，aspose 新寫法
             Workbook wb = new Workbook(new MemoryStream(Resources.社團成績校對單));
 
             //Workbook wb = new Workbook();        已過時
@@ -109,7 +109,7 @@ namespace JHSchool.Association
 
             sheet2.Cells[2, 0].PutValue("班級");
             sheet2.Cells[2, 1].PutValue("座號");
-            sheet2.Cells[2, 2].PutValue("學號");
+            sheet2.Cells[2, 2].PutValue("學號");            
             sheet2.Cells[2, 3].PutValue("姓名");
 
             int CountSetup = 0;
@@ -251,6 +251,8 @@ namespace JHSchool.Association
                 sheet1.HorizontalPageBreaks.Add(RowIndex, 0);
                 sheet1.AutoFitColumns();
                 sheet1.AutoFitRows();
+                // 2017/12/05，羿均， 調整學號欄位寬度
+                sheet1.Cells.SetColumnWidth(2, sheet1.Cells[2, 2].Value.ToString().Length * 4.5);
             } 
             #endregion
 
