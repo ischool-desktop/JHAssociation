@@ -16,7 +16,6 @@ namespace JHSchool.Association
 
         static public void Main()
         {
-
             #region 主要
 
             //增加一個頁籤
