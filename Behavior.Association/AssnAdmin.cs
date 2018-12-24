@@ -20,7 +20,7 @@ namespace JHSchool.Association
     public partial class AssnAdmin : NLDPanel
     {
         //List<JHCourseRecord> AllAssn = new List<JHCourseRecord>();
-        private BackgroundWorker BGW1 = new BackgroundWorker();
+        public BackgroundWorker BGW1 = new BackgroundWorker();
 
         private Dictionary<string, List<string>> AssociationCourseList = new Dictionary<string, List<string>>();
 
@@ -297,7 +297,7 @@ namespace JHSchool.Association
             FilterMenu.Text = FiltedSemester;
 
             //0706 -暫時移除
-            //SetFilterSource(FiltedSemester);        
+            //SetFilterSource(FiltedSemester);
 
             //Search
             Framework.ConfigData cd = User.Configuration["AssociationSearchOptionPreference"];

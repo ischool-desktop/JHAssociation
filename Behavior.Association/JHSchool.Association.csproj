@@ -148,6 +148,11 @@
       <HintPath>Library\JHSchool.Evaluation.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="K12.Behavior.TheCadre, Version=1.0.6.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\K12.Behavior.TheCadre.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="K12.Data, Version=2.0.0.2, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\K12.Data.dll</HintPath>
@@ -718,6 +723,8 @@
     <Content Include="Library\JHSchool.dll" />
     <Content Include="Library\JHSchool.Evaluation.dll" />
     <Content Include="Library\JHSchool.Evaluation.pdb" />
+    <Content Include="Library\K12.Behavior.TheCadre.dll" />
+    <Content Include="Library\K12.Behavior.TheCadre.pdb" />
     <Content Include="Library\K12.Data.dll" />
     <Content Include="Library\K12.Data.pdb" />
     <Content Include="Library\K12.Data.xml" />

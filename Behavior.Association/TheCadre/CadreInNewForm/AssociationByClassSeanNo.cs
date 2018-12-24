@@ -348,7 +348,6 @@ namespace JHSchool.Association
                 DefList.Add(data._CadreRecord);
             }
 
-
             ////取得所有目前社團幹部資料
             //List<SchoolObject> DeleteList = _accessHelper.Select<SchoolObject>(string.Format("SchoolYear = '{0}' and Semester = '{1}' and ReferenceType = '{2}'", School.DefaultSchoolYear, School.DefaultSemester, "學校幹部"));
             ////新增資料清單
@@ -414,28 +413,28 @@ namespace JHSchool.Association
             //敘獎模式
             if (checkBoxX1.Checked)
             {
-                List<SchoolObject> list = new List<SchoolObject>();
-                if (CadreIDList.Count != 0)
-                {
-                    String sb123 = string.Join(",", CadreIDList.ToArray());
-                    list = _accessHelper.Select<SchoolObject>(string.Format("UID in (" + sb123 + ")"));
-                }
-
-                list.AddRange(DefList);
-
-                if (list.Count != 0)
-                {
-                    //進行敘獎操作
-                    //ps:絮獎模式有兩種
-                    //1.將學生基本資料導入獎勵功能
-                    //2.透過設定值,以幹部為基準進行絮獎(較方便) <--
-                    MutiMeritDemerit mmd = new MutiMeritDemerit("獎勵", list, "社團幹部", DefSchoolYear, DefSemester);
-                    mmd.ShowDialog();
-                }
-                else
-                {
-                    MsgBox.Show("因無學生擔任幹部\n敘獎畫面將不會開啟!!");
-                }
+                (new K12.Behavior.TheCadre.CadreMeritManage.CadreMeritManage(this.DefSchoolYear, this.DefSemester, CadreType.ClubCadre,this._AssociationID)).ShowDialog();
+                // 舊功能畫面
+                //List<SchoolObject> list = new List<SchoolObject>();
+                //if (CadreIDList.Count != 0)
+                //{
+                //    String sb123 = string.Join(",", CadreIDList.ToArray());
+                //    list = _accessHelper.Select<SchoolObject>(string.Format("UID in (" + sb123 + ")"));
+                //}
+                //list.AddRange(DefList);
+                //if (list.Count != 0)
+                //{
+                //    //進行敘獎操作
+                //    //ps:絮獎模式有兩種
+                //    //1.將學生基本資料導入獎勵功能
+                //    //2.透過設定值,以幹部為基準進行絮獎(較方便) <--
+                //    MutiMeritDemerit mmd = new MutiMeritDemerit("獎勵", list, "社團幹部", DefSchoolYear, DefSemester);
+                //    mmd.ShowDialog();
+                //}
+                //else
+                //{
+                //    MsgBox.Show("因無學生擔任幹部\n敘獎畫面將不會開啟!!");
+                //}
             }
 
             Reset();
