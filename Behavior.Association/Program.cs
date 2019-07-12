@@ -21,6 +21,11 @@ namespace JHSchool.Association
             //增加一個頁籤
             MotherForm.AddPanel(AssnAdmin.Instance);
 
+            //UDT Setup
+            FISCA.UDT.SchemaManager sch = new FISCA.UDT.SchemaManager(FISCA.Authentication.DSAServices.DefaultConnection);
+            sch.SyncSchema(new ClubSchedule());
+            sch.SyncSchema(new ClubSetting());
+
             //增加一個ListView
             AssnAdmin.Instance.AddView(new ExtracurricularActivitiesView());
 
@@ -374,6 +379,16 @@ namespace JHSchool.Association
             };
 
             #endregion
+
+            //2019/7/10 - 社團時間表
+            RibbonBarItem setup = AssnAdmin.Instance.RibbonBarItems["設定"];
+            setup["社團時間表"].Size = RibbonBarButton.MenuButtonSize.Large;
+            setup["社團時間表"].Enable = true; //權限
+            setup["社團時間表"].Click += delegate
+            {
+                new ClubSectionDetail().ShowDialog();
+            };
+
             Results["社團成績輸入"].Enable = false;
             Results["社團成績期末結算"].Enable = false;
             Check["社團評量輸入檢查"].Enable = false;

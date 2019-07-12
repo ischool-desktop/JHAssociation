@@ -59,6 +59,7 @@
   <ItemGroup>
     <Reference Include="Aspose.Cells_201402">
       <HintPath>Library\Aspose.Cells_201402.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Aspose.Words, Version=4.4.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -73,6 +74,7 @@
     <Reference Include="DevComponents.DotNetBar2, Version=9.5.0.1, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\DevComponents.DotNetBar2.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="DocValidate, Version=1.1.3.7, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -137,6 +139,7 @@
     <Reference Include="JHSchool, Version=1.0.4.11, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\JHSchool.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="JHSchool.Data, Version=2.0.0.2, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -218,6 +221,12 @@
     </Compile>
     <Compile Include="AssonExtendControls\AssnCourseItem.Designer.cs">
       <DependentUpon>AssnCourseItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AssonExtendControls\ClubSectionDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AssonExtendControls\ClubSectionDetail.Designer.cs">
+      <DependentUpon>ClubSectionDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="DetailContentBase.cs">
       <SubType>UserControl</SubType>
@@ -383,6 +392,7 @@
     <Compile Include="Ribbon\AssnEvaluationConfig.Designer.cs">
       <DependentUpon>AssnEvaluationConfig.cs</DependentUpon>
     </Compile>
+    <Compile Include="tool.cs" />
     <Compile Include="UDT\AssnObj.cs" />
     <Compile Include="Ribbon\AssnResultsInputCheck\AssnSelect.cs" />
     <Compile Include="Ribbon\AssnStudentChange\ChangeForm.cs">
@@ -455,6 +465,8 @@
       <DependentUpon>AssonResultsCheck.cs</DependentUpon>
     </Compile>
     <Compile Include="UDT\ClassCadreNameObj.cs" />
+    <Compile Include="UDT\NewUDT\ClubSchedule.cs" />
+    <Compile Include="UDT\NewUDT\ClubSetting.cs" />
     <Compile Include="UDT\SchoolObject.cs" />
     <Compile Include="UDT\SettleAccountsForm.cs">
       <SubType>Form</SubType>
@@ -475,6 +487,9 @@
     <EmbeddedResource Include="AssonExtendControls\AssnCourseItem.resx">
       <DependentUpon>AssnCourseItem.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AssonExtendControls\ClubSectionDetail.resx">
+      <DependentUpon>ClubSectionDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\SpecifyByName_2\ClubActivitiesForm_2.resx">
       <DependentUpon>ClubActivitiesForm_2.cs</DependentUpon>
