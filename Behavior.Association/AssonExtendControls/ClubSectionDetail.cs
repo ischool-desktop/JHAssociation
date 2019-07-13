@@ -381,6 +381,7 @@ namespace JHSchool.Association
                 cbSingClub.Enabled = value;
                 cbDoubleClub.Enabled = value;
                 btnSave.Enabled = value;
+                cbGradeYear.Enabled = value;
             }
         }
 

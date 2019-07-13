@@ -383,7 +383,8 @@ namespace JHSchool.Association
             //2019/7/10 - 社團時間表
             RibbonBarItem setup = AssnAdmin.Instance.RibbonBarItems["設定"];
             setup["社團時間表"].Size = RibbonBarButton.MenuButtonSize.Large;
-            setup["社團時間表"].Enable = true; //權限
+            setup["社團時間表"].Image = Resources.add_row_128;
+            setup["社團時間表"].Enable = User.Acl["JHSchool.Association.Ribbon00150.new"].Executable;
             setup["社團時間表"].Click += delegate
             {
                 new ClubSectionDetail().ShowDialog();
@@ -457,6 +458,7 @@ namespace JHSchool.Association
             ribbon.Add(new Framework.Security.RibbonFeature("JHSchool.Association.Ribbon00130", "上課地點管理"));
             ribbon.Add(new Framework.Security.RibbonFeature("JHSchool.Association.Ribbon00140", "社團歷程"));
             ribbon.Add(new Framework.Security.RibbonFeature("JHSchool.Association.Ribbon00145.1", "社團幹部登錄"));
+            ribbon.Add(new Framework.Security.RibbonFeature("JHSchool.Association.Ribbon00150.new", "社團時間表"));
 
             Framework.Security.Catalog detail = Framework.Security.RoleAclSource.Instance["社團作業"]["資料項目"];
             detail.Add(new Framework.Security.DetailItemFeature("JHSchool.Association.Detail0010", "社團基本資料"));
