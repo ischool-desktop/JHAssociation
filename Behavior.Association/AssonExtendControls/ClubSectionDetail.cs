@@ -155,10 +155,10 @@ order by grade_year");
             {
                 _clubSetting = cSettingList[0];
                 bool check = _clubSetting.IsSingleDoubleWeek;
-                if (!check)
-                    cbSingClub.Checked = true;
-                else
+                if (check)
                     cbDoubleClub.Checked = true;
+                else
+                    cbSingClub.Checked = true;
             }
             else
             {
