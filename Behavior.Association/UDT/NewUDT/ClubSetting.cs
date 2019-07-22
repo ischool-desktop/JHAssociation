@@ -25,5 +25,17 @@ namespace JHSchool.Association
         /// </summary>
         [Field(Field = "grade_year")]
         public string GradeYear { get; set; }
+
+        /// <summary>
+        /// 日期學年度
+        /// </summary>
+        [Field(Field = "school_year", Indexed = false)]
+        public string SchoolYear { get; set; }
+
+        /// <summary>
+        /// 日期學期
+        /// </summary>
+        [Field(Field = "semester", Indexed = false)]
+        public string Semester { get; set; }
     }
 }

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,7 +42,14 @@
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.cbGradeYear = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.lbSchoolYear = new DevComponents.DotNetBar.LabelX();
+            this.lbSemester = new DevComponents.DotNetBar.LabelX();
+            this.intSchoolYear = new DevComponents.Editors.IntegerInput();
+            this.cbSemester = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItem1 = new DevComponents.Editors.ComboItem();
+            this.comboItem2 = new DevComponents.Editors.ComboItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.intSchoolYear)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewX1
@@ -58,19 +65,19 @@
             this.Column1,
             this.Column2,
             this.Column3});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataGridViewX1.Location = new System.Drawing.Point(12, 47);
+            this.dataGridViewX1.Location = new System.Drawing.Point(12, 65);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.RowTemplate.Height = 24;
-            this.dataGridViewX1.Size = new System.Drawing.Size(462, 459);
+            this.dataGridViewX1.Size = new System.Drawing.Size(462, 413);
             this.dataGridViewX1.TabIndex = 0;
             this.dataGridViewX1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewX1_CellEndEdit);
             // 
@@ -82,8 +89,8 @@
             // 
             // Column2
             // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle1;
             this.Column2.HeaderText = "星期";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
@@ -109,7 +116,7 @@
             this.btnSave.AutoSize = true;
             this.btnSave.BackColor = System.Drawing.Color.Transparent;
             this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSave.Location = new System.Drawing.Point(317, 526);
+            this.btnSave.Location = new System.Drawing.Point(317, 527);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 25);
             this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -124,7 +131,7 @@
             this.btnExit.AutoSize = true;
             this.btnExit.BackColor = System.Drawing.Color.Transparent;
             this.btnExit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnExit.Location = new System.Drawing.Point(399, 526);
+            this.btnExit.Location = new System.Drawing.Point(399, 527);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 25);
             this.btnExit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -146,7 +153,7 @@
             this.cbSingClub.Checked = true;
             this.cbSingClub.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbSingClub.CheckValue = "Y";
-            this.cbSingClub.Location = new System.Drawing.Point(78, 526);
+            this.cbSingClub.Location = new System.Drawing.Point(78, 495);
             this.cbSingClub.Name = "cbSingClub";
             this.cbSingClub.Size = new System.Drawing.Size(80, 21);
             this.cbSingClub.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -163,7 +170,7 @@
             // 
             this.lbHelp1.BackgroundStyle.Class = "";
             this.lbHelp1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbHelp1.Location = new System.Drawing.Point(12, 526);
+            this.lbHelp1.Location = new System.Drawing.Point(12, 495);
             this.lbHelp1.Name = "lbHelp1";
             this.lbHelp1.Size = new System.Drawing.Size(60, 21);
             this.lbHelp1.TabIndex = 4;
@@ -180,7 +187,7 @@
             this.cbDoubleClub.BackgroundStyle.Class = "";
             this.cbDoubleClub.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.cbDoubleClub.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
-            this.cbDoubleClub.Location = new System.Drawing.Point(164, 526);
+            this.cbDoubleClub.Location = new System.Drawing.Point(164, 495);
             this.cbDoubleClub.Name = "cbDoubleClub";
             this.cbDoubleClub.Size = new System.Drawing.Size(80, 21);
             this.cbDoubleClub.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -197,7 +204,7 @@
             this.labelX3.BackgroundStyle.Class = "";
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelX3.Location = new System.Drawing.Point(286, 14);
+            this.labelX3.Location = new System.Drawing.Point(286, 492);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(188, 21);
             this.labelX3.TabIndex = 11;
@@ -210,9 +217,9 @@
             this.cbGradeYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbGradeYear.FormattingEnabled = true;
             this.cbGradeYear.ItemHeight = 19;
-            this.cbGradeYear.Location = new System.Drawing.Point(65, 12);
+            this.cbGradeYear.Location = new System.Drawing.Point(334, 22);
             this.cbGradeYear.Name = "cbGradeYear";
-            this.cbGradeYear.Size = new System.Drawing.Size(121, 25);
+            this.cbGradeYear.Size = new System.Drawing.Size(68, 25);
             this.cbGradeYear.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbGradeYear.TabIndex = 12;
             this.cbGradeYear.SelectedIndexChanged += new System.EventHandler(this.cbGreadYear_SelectedIndexChanged);
@@ -226,17 +233,95 @@
             // 
             this.labelX1.BackgroundStyle.Class = "";
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(12, 14);
+            this.labelX1.Location = new System.Drawing.Point(290, 24);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(34, 21);
             this.labelX1.TabIndex = 13;
             this.labelX1.Text = "年級";
+            // 
+            // lbSchoolYear
+            // 
+            this.lbSchoolYear.AutoSize = true;
+            this.lbSchoolYear.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.lbSchoolYear.BackgroundStyle.Class = "";
+            this.lbSchoolYear.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbSchoolYear.Location = new System.Drawing.Point(21, 24);
+            this.lbSchoolYear.Name = "lbSchoolYear";
+            this.lbSchoolYear.Size = new System.Drawing.Size(47, 21);
+            this.lbSchoolYear.TabIndex = 14;
+            this.lbSchoolYear.Text = "學年度";
+            // 
+            // lbSemester
+            // 
+            this.lbSemester.AutoSize = true;
+            this.lbSemester.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.lbSemester.BackgroundStyle.Class = "";
+            this.lbSemester.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbSemester.Location = new System.Drawing.Point(168, 24);
+            this.lbSemester.Name = "lbSemester";
+            this.lbSemester.Size = new System.Drawing.Size(34, 21);
+            this.lbSemester.TabIndex = 15;
+            this.lbSemester.Text = "學期";
+            // 
+            // intSchoolYear
+            // 
+            this.intSchoolYear.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.intSchoolYear.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.intSchoolYear.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.intSchoolYear.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.intSchoolYear.Location = new System.Drawing.Point(78, 22);
+            this.intSchoolYear.MaxValue = 999;
+            this.intSchoolYear.MinValue = 100;
+            this.intSchoolYear.Name = "intSchoolYear";
+            this.intSchoolYear.ShowUpDown = true;
+            this.intSchoolYear.Size = new System.Drawing.Size(80, 25);
+            this.intSchoolYear.TabIndex = 16;
+            this.intSchoolYear.Value = 100;
+            this.intSchoolYear.ValueChanged += new System.EventHandler(this.intSchoolYear_ValueChanged);
+            // 
+            // cbSemester
+            // 
+            this.cbSemester.DisplayMember = "Text";
+            this.cbSemester.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbSemester.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSemester.FormattingEnabled = true;
+            this.cbSemester.ItemHeight = 19;
+            this.cbSemester.Items.AddRange(new object[] {
+            this.comboItem1,
+            this.comboItem2});
+            this.cbSemester.Location = new System.Drawing.Point(212, 22);
+            this.cbSemester.Name = "cbSemester";
+            this.cbSemester.Size = new System.Drawing.Size(68, 25);
+            this.cbSemester.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbSemester.TabIndex = 17;
+            this.cbSemester.SelectedIndexChanged += new System.EventHandler(this.cbSemester_SelectedIndexChanged);
+            // 
+            // comboItem1
+            // 
+            this.comboItem1.Text = "1";
+            // 
+            // comboItem2
+            // 
+            this.comboItem2.Text = "2";
             // 
             // ClubSectionDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(486, 561);
+            this.Controls.Add(this.cbSemester);
+            this.Controls.Add(this.intSchoolYear);
+            this.Controls.Add(this.lbSemester);
+            this.Controls.Add(this.lbSchoolYear);
             this.Controls.Add(this.labelX1);
             this.Controls.Add(this.cbGradeYear);
             this.Controls.Add(this.labelX3);
@@ -251,6 +336,7 @@
             this.Text = "社團上課時間表";
             this.Load += new System.EventHandler(this.ClubSectionDetail_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.intSchoolYear)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -270,5 +356,11 @@
         private DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.DotNetBar.Controls.ComboBoxEx cbGradeYear;
         private DevComponents.DotNetBar.LabelX labelX1;
+        private DevComponents.DotNetBar.LabelX lbSchoolYear;
+        private DevComponents.DotNetBar.LabelX lbSemester;
+        private DevComponents.Editors.IntegerInput intSchoolYear;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbSemester;
+        private DevComponents.Editors.ComboItem comboItem1;
+        private DevComponents.Editors.ComboItem comboItem2;
     }
 }

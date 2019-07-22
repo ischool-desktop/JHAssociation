@@ -33,29 +33,16 @@ namespace JHSchool.Association
         [Field(Field = "grade_year")]
         public string GradeYear { get; set; }
 
-        ///// <summary>
-        ///// 目前選社 學年度
-        ///// </summary>
-        //[Field(Field = "SchoolYear", Indexed = false)]
-        //public string SchoolYear { get; set; }
+        /// <summary>
+        /// 日期學年度
+        /// </summary>
+        [Field(Field = "school_year", Indexed = false)]
+        public string SchoolYear { get; set; }
 
-        ///// <summary>
-        ///// 目前選社 學期
-        ///// </summary>
-        //[Field(Field = "Semester", Indexed = false)]
-        //public string Semester { get; set; }
-
-        ///// <summary>
-        ///// 開始日期
-        ///// </summary>
-        //[Field(Field = "start_time", Indexed = true)]
-        //public DateTime StartTime { get; set; }
-
-        ///// <summary>
-        ///// 結束日期
-        ///// </summary>
-        //[Field(Field = "end_time", Indexed = true)]
-        //public DateTime EndTime { get; set; }
-
+        /// <summary>
+        /// 日期學期
+        /// </summary>
+        [Field(Field = "semester", Indexed = false)]
+        public string Semester { get; set; }
     }
 }

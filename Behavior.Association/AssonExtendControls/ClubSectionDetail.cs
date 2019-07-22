@@ -23,6 +23,10 @@ namespace JHSchool.Association
         List<string> cPeriodNameList;
         List<string> GradeYearList;
 
+        int gradeYear;
+        int school_year;
+        int semester;
+
         ClubSetting _clubSetting;
 
         public ClubSectionDetail()
@@ -60,11 +64,19 @@ namespace JHSchool.Association
 
             //取得年級清單
             GradeYearList = new List<string>();
-            DataTable dt = tool._Q.Select("select grade_year from class where grade_year is not null group by grade_year order by grade_year");
+            DataTable dt = tool._Q.Select(@"select grade_year from class 
+where grade_year is not null 
+group by grade_year 
+order by grade_year");
             foreach (DataRow row in dt.Rows)
             {
                 GradeYearList.Add("" + row["grade_year"]);
             }
+
+            gradeYear = 1;
+            school_year = int.Parse(K12.Data.School.DefaultSchoolYear);
+            semester = K12.Data.School.DefaultSemester == "1" ? 1 : 2;
+
         }
 
         private void BGW_setup_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -73,15 +85,21 @@ namespace JHSchool.Association
             {
                 if (e.Error == null)
                 {
-                    //年級設定
-                    cbGradeYear.Items.Clear();
-                    cbGradeYear.Items.AddRange(GradeYearList.ToArray());
-
                     //節次
                     Column3.Items.Clear();
                     Column3.Items.AddRange(cPeriodNameList.ToArray());
 
-                    //
+                    //年級設定
+                    cbGradeYear.Items.Clear();
+                    cbGradeYear.Items.AddRange(GradeYearList.ToArray());
+
+                    //學年度
+                    intSchoolYear.Value = school_year;
+
+                    //學期
+                    cbSemester.SelectedIndex = semester - 1;
+
+                    //年級
                     cbGradeYear.SelectedIndex = 0;
                 }
                 else
@@ -95,31 +113,18 @@ namespace JHSchool.Association
             }
         }
 
-        //如果切換學年度學期
-        private void cbGreadYear_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string gradeYear = cbGradeYear.SelectedItem.ToString();
-
-            formLock = false;
-            BGW_data.RunWorkerAsync(gradeYear);
-        }
-
         private void BGW_data_DoWork(object sender, DoWorkEventArgs e)
         {
-            string gradeYear = "" + e.Argument;
-
             //取得單雙周
-            cSettingList = tool._A.Select<ClubSetting>(string.Format("grade_year='{0}'", gradeYear));
+            cSettingList = tool._A.Select<ClubSetting>(string.Format("school_year='{0}' and semester='{1}' and grade_year='{2}'", school_year.ToString(), semester.ToString(), gradeYear.ToString()));
 
             cScheduleList = new List<ClubSchedule>();
-            if (gradeYear != "")
-            {
-                //取得上課時間表
-                cScheduleList = tool._A.Select<ClubSchedule>(string.Format("grade_year='{0}'", gradeYear));
 
-                //依期排序
-                cScheduleList.Sort(ByDate);
-            }
+            //取得上課時間表
+            cScheduleList = tool._A.Select<ClubSchedule>(string.Format("school_year='{0}' and semester='{1}' and grade_year='{2}'", school_year.ToString(), semester.ToString(), gradeYear.ToString()));
+
+            //依期排序
+            cScheduleList.Sort(ByDate);
         }
 
         private void BGW_data_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -146,14 +151,19 @@ namespace JHSchool.Association
         private void BindData()
         {
             //單雙周設定
-            if (cSettingList.Count == 1)
+            if (cSettingList.Count > 0)
             {
                 _clubSetting = cSettingList[0];
                 bool check = _clubSetting.IsSingleDoubleWeek;
-                if (check)
+                if (!check)
                     cbSingClub.Checked = true;
                 else
                     cbDoubleClub.Checked = true;
+            }
+            else
+            {
+                cbDoubleClub.Checked = false;
+                cbSingClub.Checked = false;
             }
 
             //上課節次設定
@@ -191,40 +201,48 @@ namespace JHSchool.Association
                 List<ClubSchedule> InsertList = new List<ClubSchedule>();
 
                 //年級
-                string gradeYear = cbGradeYear.SelectedItem.ToString();
+                gradeYear = int.Parse(cbGradeYear.SelectedItem.ToString());
+                school_year = intSchoolYear.Value;
+                semester = int.Parse(cbSemester.SelectedItem.ToString());
+
                 foreach (DataGridViewRow row in dataGridViewX1.Rows)
                 {
                     if (row.IsNewRow)
                         continue;
 
                     ClubSchedule cs = new ClubSchedule();
+                    cs.GradeYear = gradeYear.ToString();
+                    cs.SchoolYear = school_year.ToString();
+                    cs.Semester = semester.ToString();
+
                     cs.OccurDate = DateTime.Parse("" + row.Cells[Column1.Index].Value);
                     cs.Week = "" + row.Cells[Column2.Index].Value;
                     cs.Period = "" + row.Cells[Column3.Index].Value;
-                    cs.GradeYear = gradeYear;
                     InsertList.Add(cs);
                 }
 
                 if (InsertList.Count > 0)
                 {
                     //刪除上課時間表
-                    cScheduleList = tool._A.Select<ClubSchedule>(string.Format("grade_year='{0}'", gradeYear));
+                    cScheduleList = tool._A.Select<ClubSchedule>(string.Format("school_year='{0}' and semester='{1}' and grade_year='{2}'", school_year, semester, gradeYear));
                     tool._A.DeletedValues(cScheduleList);
 
                     //新增上課時間表
                     tool._A.InsertValues(InsertList);
 
                     //刪除單雙週
-                    cSettingList = tool._A.Select<ClubSetting>(string.Format("grade_year='{0}'", gradeYear));
+                    cSettingList = tool._A.Select<ClubSetting>(string.Format("school_year='{0}' and semester='{1}' and grade_year='{2}'", school_year, semester, gradeYear));
                     tool._A.DeletedValues(cSettingList);
 
                     //新增單雙週
                     ClubSetting setting = new ClubSetting();
-                    setting.GradeYear = gradeYear;
+                    setting.SchoolYear = school_year.ToString();
+                    setting.Semester = semester.ToString();
+                    setting.GradeYear = gradeYear.ToString();
                     setting.IsSingleDoubleWeek = cbDoubleClub.Checked;
                     setting.Save();
 
-                    BGW_data.RunWorkerAsync(gradeYear);
+                    BGW_data.RunWorkerAsync();
                     MsgBox.Show("儲存成功");
                 }
                 else
@@ -393,6 +411,40 @@ namespace JHSchool.Association
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        //如果切換學年度學期
+        private void cbGreadYear_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            gradeYear = int.Parse(cbGradeYear.SelectedItem.ToString());
+
+            if (!BGW_data.IsBusy)
+            {
+                formLock = false;
+                BGW_data.RunWorkerAsync();
+            }
+        }
+
+        private void cbSemester_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            semester = int.Parse(cbSemester.SelectedItem.ToString());
+
+            if (!BGW_data.IsBusy)
+            {
+                formLock = false;
+                BGW_data.RunWorkerAsync();
+            }
+        }
+
+        private void intSchoolYear_ValueChanged(object sender, EventArgs e)
+        {
+            school_year = intSchoolYear.Value;
+
+            if (!BGW_data.IsBusy)
+            {
+                formLock = false;
+                BGW_data.RunWorkerAsync();
+            }
         }
     }
 }
