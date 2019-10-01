@@ -54,6 +54,14 @@ namespace JHSchool.Association
                 AssnEvents.RaiseAssnChanged();
             };
 
+            //處理產品社團,當使用轉入課程功能時
+            //需要引發課程的更新事件
+            //2019/9/10 - Dylan
+            FISCA.InteractionService.SubscribeEvent("課程/重新整理", (sender, args) =>
+            {
+                AssnEvents.RaiseAssnChanged();
+            });
+
             #endregion
 
             #region 社團Ribbon
