@@ -62,11 +62,20 @@ namespace JHSchool.Association
                 AssnEvents.RaiseAssnChanged();
             });
 
+            //舊版寫法
+            //FISCA.Features.Register("課程/重新整理", arg =>
+            //{
+            //    AssnEvents.RaiseAssnChanged();
+            //});
+
+            //呼叫啟動的寫法
+            //FISCA.Features.Invoke("課程/重新整理");
+
             #endregion
 
             #region 社團Ribbon
 
-            RibbonBarItem edit = AssnAdmin.Instance.RibbonBarItems["編輯"];
+                RibbonBarItem edit = AssnAdmin.Instance.RibbonBarItems["編輯"];
             #region 編輯
             edit["新增社團"].Size = RibbonBarButton.MenuButtonSize.Large;
             edit["新增社團"].Image = Resources.recreation_add_64;
