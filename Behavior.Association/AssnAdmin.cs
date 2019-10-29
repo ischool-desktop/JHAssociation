@@ -465,9 +465,13 @@ namespace JHSchool.Association
         /// <param name="e"></param>
         void JHTeacher_AfterChange(object sender, K12.Data.DataChangedEventArgs e)
         {
-            JHCourse.RemoveAll();
-            ChengCourseDic(this.DisplaySource); //更新字典
-            Field2.Reload();
+            JHTeacher.RemoveAll();
+            //2019/10/29 - 刪除教師引發錯誤,因此判斷為0時不予執行
+            if (this.DisplaySource.Count > 0)
+            {
+                ChengCourseDic(this.DisplaySource); //更新字典
+                Field2.Reload();
+            }
         }
 
         /// <summary>
@@ -477,7 +481,7 @@ namespace JHSchool.Association
         /// <param name="e"></param>
         void TeacherInstance_ItemUpdated(object sender, Framework.ItemUpdatedEventArgs e)
         {
-            JHCourse.RemoveAll();
+            JHTeacher.RemoveAll();
             ChengCourseDic(this.DisplaySource); //更新字典
             Field2.Reload();
         }
