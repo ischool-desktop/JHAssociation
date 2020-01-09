@@ -4,6 +4,7 @@ using System.Text;
 using Aspose.Cells;
 using System.Windows.Forms;
 using FISCA.Presentation.Controls;
+using System.Data;
 
 namespace JHSchool.Association
 {
@@ -37,6 +38,36 @@ namespace JHSchool.Association
                 foreach (int colIndex in _colIndexes)
                     _worksheet.Cells[sheetRowIndex, sheetColIndex++].PutValue("" + row.Cells[colIndex].Value);
             }
+
+            _worksheet.AutoFitColumns();
+        }
+
+        public DataGridViewExport(DataTable dgv)
+        {
+            _workbook = new Workbook();
+            _workbook.Worksheets.Clear();
+            _worksheet = _workbook.Worksheets[_workbook.Worksheets.Add()];
+            _worksheet.Name = "Sheet1";
+            List<string> columnName = new List<string>();
+            int sheetRowIndex = 0;
+            int sheetColIndex = 0;
+            foreach (DataColumn col in dgv.Columns)
+            {
+                columnName.Add(col.ColumnName);
+                _worksheet.Cells[sheetRowIndex, sheetColIndex++].PutValue(col.ColumnName);
+            }
+
+            foreach (DataRow row in dgv.Rows)
+            {
+                sheetRowIndex++;
+                sheetColIndex = 0;
+                foreach (string colInName in columnName)
+                    _worksheet.Cells[sheetRowIndex, sheetColIndex++].PutValue("" + row[colInName]);
+            }
+            //AutoFitterOptions Options = new AutoFitterOptions();
+            //Options.AutoFitMergedCells = true;
+            //Options.OnlyAuto = true;
+            //_worksheet.AutoFitColumns(0, sheetColIndex, Options);
 
             _worksheet.AutoFitColumns();
         }

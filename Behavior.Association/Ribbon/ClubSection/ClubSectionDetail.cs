@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -445,6 +446,60 @@ order by grade_year");
                 formLock = false;
                 BGW_data.RunWorkerAsync();
             }
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            //匯出畫面上的資料
+            #region 匯出
+            try
+            {
+                //使用學年度學期
+                //取得
+                DataTable dt = tool._Q.Select(string.Format(@"select clubsetting.school_year as 學年度,
+clubsetting.semester as 學期,clubsetting.grade_year as 年級,
+clubsetting.is_single_double_week as 單雙周,clubschedule.week as 星期,
+clubschedule.period as 節次,clubschedule.occur_date as 日期
+from $jhschool.association.udt.clubsetting clubsetting
+join $jhschool.association.udt.clubschedule clubschedule 
+on clubsetting.school_year=clubschedule.school_year and 
+clubsetting.semester=clubschedule.semester 
+and clubsetting.grade_year=clubschedule.grade_year
+where clubsetting.school_year='{0}' and clubsetting.semester='{1}'", school_year, semester));
+
+                DataGridViewExport export = new DataGridViewExport(dt);
+                SaveFileDialog SaveFileDialog1 = new SaveFileDialog();
+                SaveFileDialog1.Filter = "Excel (*.xlsx)|*.xlsx|Excel (*.xls)|*.xls|所有檔案 (*.*)|*.*";
+                SaveFileDialog1.FileName = string.Format("{0}學年度 第{1}學期 社團上課時間表", "" + school_year, "" + semester);
+
+                if (SaveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    export.Save(SaveFileDialog1.FileName);
+                    Process.Start(SaveFileDialog1.FileName);
+                }
+                else
+                {
+                    MsgBox.Show("檔案未儲存");
+                }
+            }
+            catch (Exception ex)
+            {
+                MsgBox.Show("匯出發生錯誤!\n" + ex.Message);
+            }
+            #endregion
+
+
+
+
+        }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            //匯入畫面上的資料
+
+
+
+
         }
     }
 }
