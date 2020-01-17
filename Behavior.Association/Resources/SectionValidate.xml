@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet type="text/xsl" href="format.xsl" ?>
+<ValidateRule>
+  <DuplicateDetection>
+    <Detector Name="PrimaryKey">
+      <Field Name="學年度"/>
+      <Field Name="學期"/>
+      <Field Name="年級"/>
+      <Field Name="日期"/>
+      <Field Name="節次"/>
+    </Detector>
+  </DuplicateDetection>
+  <FieldList>
+    <Field Required="True" Name="學年度" Description="學年度/學期/社團名稱/學號為鍵值必填">
+      <Validate AutoCorrect="False" Description="「學年度」不允許空白。" ErrorType="Error" Validator="不可空白" When=""/>
+    </Field>
+    <Field Required="True" Name="學期" Description="學年度/學期/社團名稱/學號為鍵值必填">
+      <Validate AutoCorrect="False" Description="「學期」不允許空白。" ErrorType="Error" Validator="不可空白" When=""/>
+      <Validate AutoCorrect="False" Description="「學期」只允許「1、2」。" ErrorType="Error" Validator="學期列舉" When=""/>
+    </Field>
+    <Field Required="True" Name="年級" EmptyAlsoValidate="False" Description="請輸入目前系統內的年級">
+      <Validate AutoCorrect="False" Description="「年級」必須存在系統。" ErrorType="Error" Validator="年級是否存在目前系統" When=""/>
+    </Field>
+    <Field Required="False" Name="日期" EmptyAlsoValidate="False" Description="必須是(年/月/日)日期">
+      <Validate AutoCorrect="False" Description="「生日」格式不正確，建議使用西元「年/月/日」例如「2019/03/18」。" ErrorType="Warning" Validator="合法日期" When="" />
+    </Field>
+    <Field Required="False" Name="節次" EmptyAlsoValidate="False" Description="節次必須是系統內的節次">
+      <Validate AutoCorrect="False" Description="「節次」必須存在系統。" ErrorType="Error" Validator="節次是否存在目前系統" When=""/>
+    </Field>
+    <Field Required="False" Name="單雙周" Description="本課程是否為單雙周課程">
+      <Validate AutoCorrect="False" Description="「單雙周」只允許「單、雙」。" ErrorType="Error" Validator="單雙週列舉" When=""/>
+    </Field>
+  </FieldList>
+  <ValidatorList>
+    <FieldValidator Name="年級是否存在目前系統" Type="CHECKGRADEYEARASSOC"/>
+    <FieldValidator Name="節次是否存在目前系統" Type="CHECKPERIODASSOC"/>
+    <FieldValidator Name="不可空白" Type="STRINGLENGTH"/>
+    <FieldValidator Name="學期列舉" Type="Enumeration">
+      <Item Value="1"/>
+      <Item Value="2"/>
+    </FieldValidator>
+    <FieldValidator Name="單雙週列舉" Type="Enumeration">
+      <Item Value="單"/>
+      <Item Value="雙"/>
+    </FieldValidator>
+    <FieldValidator Name="合法日期" Type="MixDate">
+      <!-- Gregorian | Taiwan-->
+      <!-- Pattern 中需要 Year,Month,Day 三個 Group。-->
+      <!-- 2007/8/8 (年/月/日) -->
+      <ValidPattern DateType="Gregorian">
+        <![CDATA[^(?<Year>[0-9]{4})/(?<Month>[0-9]{1,2})/(?<Day>[0-9]{1,2})$]]>
+      </ValidPattern>
+      <Matchs CorrectTo="yyyy/MM/dd">
+        <!-- 96/8/8 (年/月/日)-->
+        <Match DateType="Taiwan"><![CDATA[^(?<Year>1?[0-9]{2})/(?<Month>[0-9]{1,2})/(?<Day>[0-9]{1,2})$]]></Match>
+        <!-- 96-8-8 (年-月-日)-->
+        <Match DateType="Taiwan"><![CDATA[^(?<Year>1?[0-9]{2})-(?<Month>[0-9]{1,2})-(?<Day>[0-9]{1,2})$]]></Match>
+        <!-- 960808 (年月日)-->
+        <Match DateType="Taiwan"><![CDATA[^(?<Year>1?[0-9]{2})(?<Month>[0-9]{2})(?<Day>[0-9]{2})$]]></Match>
+        <!-- 2007-8-8 (年/月/日)-->
+        <Match DateType="Gregorian"><![CDATA[^(?<Year>[0-9]{4})-(?<Month>[0-9]{1,2})-(?<Day>[0-9]{1,2})$]]></Match>
+        <!-- 8-8-2007 (月/日/年)-->
+        <Match DateType="Gregorian"><![CDATA[^(?<Month>[0-9]{1,2})-(?<Day>[0-9]{1,2})-(?<Year>[0-9]{4})$]]></Match>
+        <!-- 20070812 (年月日)-->
+        <Match DateType="Gregorian"><![CDATA[^(?<Year>[0-9]{4})(?<Month>[0-9]{2})(?<Day>[0-9]{2})$]]></Match>
+      </Matchs>
+    </FieldValidator>
+    <RowValidator Name="同年級單雙周必須相同" Type="WEEKNOTBEREPEATEDFILL" />
+  </ValidatorList>
+
+  <RowValidate>
+    <Validate AutoCorrect="false" Description="「同年級」單雙周必須相同" ErrorType="Error" Validator="同年級單雙周必須相同" When=""/>
+  </RowValidate>
+  <ConditionList/>
+</ValidateRule>

@@ -68,6 +68,16 @@
       <HintPath>Library\Aspose.Words.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Campus.DocumentValidator, Version=1.0.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\Campus.DocumentValidator.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Campus.Import, Version=1.0.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\Campus.Import.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Campus.Windows, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\Campus.Windows.dll</HintPath>
@@ -485,6 +495,11 @@
       <DependentUpon>檢視表現資料.cs</DependentUpon>
     </Compile>
     <Compile Include="UDT\活動表現紀錄.cs" />
+    <Compile Include="ValidationRule\AssocFieldValidatorFactory.cs" />
+    <Compile Include="ValidationRule\AssocRowValidatorFactory.cs" />
+    <Compile Include="ValidationRule\FieldValidator\PeriodStatusValidator.cs" />
+    <Compile Include="ValidationRule\FieldValidator\GradeYearStatusValidator.cs" />
+    <Compile Include="ValidationRule\RowValidator\CheckWeekValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AssonExtendControls\AssnCourseItem.resx">
@@ -701,6 +716,12 @@
   <ItemGroup>
     <Content Include="Library\Aspose.Words.dll" />
     <Content Include="Library\Aspose.Words.xml" />
+    <Content Include="Library\Campus.DocumentValidator.dll" />
+    <Content Include="Library\Campus.DocumentValidator.pdb" />
+    <Content Include="Library\Campus.DocumentValidator.xml" />
+    <Content Include="Library\Campus.Import.dll" />
+    <Content Include="Library\Campus.Import.pdb" />
+    <Content Include="Library\Campus.Import.xml" />
     <Content Include="Library\Campus.Windows.dll" />
     <Content Include="Library\Campus.Windows.pdb" />
     <Content Include="Library\Campus.Windows.xml" />
@@ -762,6 +783,7 @@
     <Content Include="Library\SmartSchool.ErrorReporting.dll" />
     <Content Include="Library\SmartSchool.ErrorReporting.pdb" />
     <Content Include="Library\SmartSchool.ErrorReporting.xml" />
+    <None Include="Resources\SectionValidate.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -84,5 +84,18 @@ namespace JHSchool.Association
                 MsgBox.Show("匯出失敗：" + ex.Message);
             }
         }
+
+        public void Save2003(string path)
+        {
+            try
+            {
+                // 支援儲存為舊版格式
+                _workbook.Save(path,SaveFormat.Excel97To2003);
+            }
+            catch (Exception ex)
+            {
+                MsgBox.Show("匯出失敗：" + ex.Message);
+            }
+        }
     }
 }

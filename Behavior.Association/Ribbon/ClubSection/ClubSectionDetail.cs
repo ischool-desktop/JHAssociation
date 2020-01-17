@@ -458,8 +458,9 @@ order by grade_year");
                 //取得
                 DataTable dt = tool._Q.Select(string.Format(@"select clubsetting.school_year as 學年度,
 clubsetting.semester as 學期,clubsetting.grade_year as 年級,
-clubsetting.is_single_double_week as 單雙周,clubschedule.week as 星期,
-clubschedule.period as 節次,clubschedule.occur_date as 日期
+clubschedule.period as 節次,
+REPLACE (LEFT(CAST(clubschedule.occur_date AS TEXT), 10), '-', '/') as 日期,clubschedule.week as 星期,
+REPLACE(REPLACE(CAST(clubsetting.is_single_double_week AS TEXT), 'true','單'), 'false', '雙') as 單雙周 
 from $jhschool.association.udt.clubsetting clubsetting
 join $jhschool.association.udt.clubschedule clubschedule 
 on clubsetting.school_year=clubschedule.school_year and 
@@ -469,12 +470,12 @@ where clubsetting.school_year='{0}' and clubsetting.semester='{1}'", school_year
 
                 DataGridViewExport export = new DataGridViewExport(dt);
                 SaveFileDialog SaveFileDialog1 = new SaveFileDialog();
-                SaveFileDialog1.Filter = "Excel (*.xlsx)|*.xlsx|Excel (*.xls)|*.xls|所有檔案 (*.*)|*.*";
+                SaveFileDialog1.Filter = "Excel (*.xls)|*.xls";
                 SaveFileDialog1.FileName = string.Format("{0}學年度 第{1}學期 社團上課時間表", "" + school_year, "" + semester);
 
                 if (SaveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    export.Save(SaveFileDialog1.FileName);
+                    export.Save2003(SaveFileDialog1.FileName);
                     Process.Start(SaveFileDialog1.FileName);
                 }
                 else
@@ -487,19 +488,12 @@ where clubsetting.school_year='{0}' and clubsetting.semester='{1}'", school_year
                 MsgBox.Show("匯出發生錯誤!\n" + ex.Message);
             }
             #endregion
-
-
-
-
         }
 
         private void btnImport_Click(object sender, EventArgs e)
         {
             //匯入畫面上的資料
-
-
-
-
+            new ImportSection("" + school_year, "" + semester).Execute();
         }
     }
 }

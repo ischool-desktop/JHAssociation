@@ -1,4 +1,5 @@
-﻿using FISCA;
+﻿using Campus.DocumentValidator;
+using FISCA;
 using FISCA.LogAgent;
 using FISCA.Presentation;
 using Framework;
@@ -28,6 +29,10 @@ namespace JHSchool.Association
 
             //增加一個ListView
             AssnAdmin.Instance.AddView(new ExtracurricularActivitiesView());
+
+            //資料驗證機制 2020/1/16
+            FactoryProvider.FieldFactory.Add(new AssocFieldValidatorFactory());
+            FactoryProvider.RowFactory.Add(new AssocRowValidatorFactory());
 
             //基本資料
             FISCA.Permission.FeatureAce UserPermission;
