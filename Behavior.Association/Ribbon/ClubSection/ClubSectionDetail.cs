@@ -243,6 +243,17 @@ order by grade_year");
                     setting.IsSingleDoubleWeek = cbDoubleClub.Checked;
                     setting.Save();
 
+                    StringBuilder sb_log = new StringBuilder();
+                    sb_log.AppendLine(string.Format("更新學年度「{0}」學期「{1}」年級「{2}」時間表內容：", school_year.ToString(), semester.ToString(), gradeYear.ToString()));
+                    foreach (ClubSchedule each in InsertList)
+                    {
+                        sb_log.AppendLine(string.Format("日期「{0}」節次「{1}」", each.OccurDate.ToString("yyyy/MM/dd"), each.Period));
+                    }
+                    sb_log.AppendLine(string.Format("年級「{0}」單雙周設定為「{1}」", setting.GradeYear, setting.IsSingleDoubleWeek ? "雙" : "單"));
+
+                    FISCA.LogAgent.ApplicationLog.Log("社團時間表", "設定", sb_log.ToString());
+
+
                     BGW_data.RunWorkerAsync();
                     MsgBox.Show("儲存成功");
                 }

@@ -162,13 +162,13 @@ namespace JHSchool.Association
                     tool._A.InsertValues(InsertScheduleList);
                    tool._A.DeletedValues(DeleteScheduleList);
 
-                    sb_log.AppendLine("新增日期資料");
+                    sb_log.AppendLine("新增日期資料：");
                     foreach (ClubSchedule each in InsertScheduleList)
                     {
                         sb_log.AppendLine(string.Format("學年度「{0}」學期「{1}」年級「{2}」日期「{3}」節次「{4}」", each.SchoolYear, each.Semester, each.GradeYear, each.OccurDate.ToString("yyyy/MM/dd"), each.Period));
                     }
                     sb_log.AppendLine("");
-                    sb_log.AppendLine("刪除日期資料");
+                    sb_log.AppendLine("刪除日期資料：");
                     foreach (ClubSchedule each in DeleteScheduleList)
                     {
                         sb_log.AppendLine(string.Format("學年度「{0}」學期「{1}」年級「{2}」日期「{3}」節次「{4}」", each.SchoolYear, each.Semester, each.GradeYear, each.OccurDate.ToString("yyyy/MM/dd"), each.Period));
@@ -180,13 +180,13 @@ namespace JHSchool.Association
                     tool._A.InsertValues(InsertSettingList);
                     tool._A.DeletedValues(DeleteSettingList);
                     sb_log.AppendLine("");
-                    sb_log.AppendLine("新增依年級單雙周設定");
+                    sb_log.AppendLine("新增依年級單雙周設定：");
                     foreach (ClubSetting each in InsertSettingList)
                     {
                         sb_log.AppendLine(string.Format("學年度「{0}」學期「{1}」年級「{2}」為「{3}」週", each.SchoolYear, each.Semester, each.GradeYear, each.IsSingleDoubleWeek ? "雙" : "單"));
                     }
                     sb_log.AppendLine("");
-                    sb_log.AppendLine("刪除依年級單雙周設定");
+                    sb_log.AppendLine("刪除依年級單雙周設定：");
                     foreach (ClubSetting each in DeleteSettingList)
                     {
                         sb_log.AppendLine(string.Format("學年度「{0}」學期「{1}」年級「{2}」為「{3}」週", each.SchoolYear, each.Semester, each.GradeYear, each.IsSingleDoubleWeek ? "雙" : "單"));
