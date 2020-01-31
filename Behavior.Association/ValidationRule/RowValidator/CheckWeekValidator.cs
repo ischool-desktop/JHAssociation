@@ -22,13 +22,13 @@ namespace JHSchool.Association
 
         public bool Validate(IRowStream Value)
         {
-            if (Value.Contains("學年度") && Value.Contains("學期") && Value.Contains("年級") && Value.Contains("單雙周"))
+            if (Value.Contains("學年度") && Value.Contains("學期") && Value.Contains("年級") && Value.Contains("上課週次"))
             {
                 string SchoolYear = Value.GetValue("學年度");
                 string Semester = Value.GetValue("學期");
                 string GradeYear = Value.GetValue("年級");
 
-                string Week = Value.GetValue("單雙周");
+                string Week = Value.GetValue("上課週次");
                 string Key = SchoolYear + "," + Semester + "," + GradeYear;
 
                 if (!mAssocNames.ContainsKey(Key))

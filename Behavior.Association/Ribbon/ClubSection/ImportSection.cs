@@ -91,7 +91,7 @@ namespace JHSchool.Association
                     string GradeYear = Row.GetValue("年級");
                     string Period = Row.GetValue("節次");
                     string OccurDate = Row.GetValue("日期");
-                    string SingleDoubleWeek = Row.GetValue("單雙周");
+                    string SingleDoubleWeek = Row.GetValue("上課週次");
 
                     ClubSchedule cs = new ClubSchedule();
                     cs.GradeYear = GradeYear;
@@ -119,7 +119,7 @@ namespace JHSchool.Association
                         setting.SchoolYear = SchoolYear;
                         setting.Semester = Semester;
                         setting.GradeYear = GradeYear;
-                        if (SingleDoubleWeek == "單")
+                        if (SingleDoubleWeek == "每週上課")
                         {
                             setting.IsSingleDoubleWeek = false;
                         }
@@ -141,8 +141,16 @@ namespace JHSchool.Association
                 {
                     if (ClubScheduleDic.ContainsKey(each))
                     {
+                        //新增資料
                         InsertScheduleList.AddRange(scheduleDic[each]);
+                        //一併刪除當學期+年級資料
                         DeleteScheduleList.AddRange(ClubScheduleDic[each]);
+                    }
+                    else
+                    {
+                        //只新增資料,不刪除資料
+                        InsertScheduleList.AddRange(scheduleDic[each]);
+
                     }
                 }
 
@@ -153,6 +161,10 @@ namespace JHSchool.Association
                         InsertSettingList.Add(settingDic[each]);
                         DeleteSettingList.Add(ClubSettingDic[each]);
                     }
+                    else
+                    {
+                        InsertSettingList.Add(settingDic[each]);
+                    }
                 }
 
                 StringBuilder sb_log = new StringBuilder();
@@ -162,16 +174,22 @@ namespace JHSchool.Association
                     tool._A.InsertValues(InsertScheduleList);
                    tool._A.DeletedValues(DeleteScheduleList);
 
-                    sb_log.AppendLine("新增日期資料：");
-                    foreach (ClubSchedule each in InsertScheduleList)
+                    if (InsertScheduleList.Count > 0)
                     {
-                        sb_log.AppendLine(string.Format("學年度「{0}」學期「{1}」年級「{2}」日期「{3}」節次「{4}」", each.SchoolYear, each.Semester, each.GradeYear, each.OccurDate.ToString("yyyy/MM/dd"), each.Period));
+                        sb_log.AppendLine("匯入日期資料：");
+                        foreach (ClubSchedule each in InsertScheduleList)
+                        {
+                            sb_log.AppendLine(string.Format("學年度「{0}」學期「{1}」年級「{2}」日期「{3}」節次「{4}」", each.SchoolYear, each.Semester, each.GradeYear, each.OccurDate.ToString("yyyy/MM/dd"), each.Period));
+                        }
                     }
-                    sb_log.AppendLine("");
-                    sb_log.AppendLine("刪除日期資料：");
-                    foreach (ClubSchedule each in DeleteScheduleList)
+                    if (DeleteScheduleList.Count > 0)
                     {
-                        sb_log.AppendLine(string.Format("學年度「{0}」學期「{1}」年級「{2}」日期「{3}」節次「{4}」", each.SchoolYear, each.Semester, each.GradeYear, each.OccurDate.ToString("yyyy/MM/dd"), each.Period));
+                        sb_log.AppendLine("");
+                        sb_log.AppendLine("被覆蓋前日期資料：");
+                        foreach (ClubSchedule each in DeleteScheduleList)
+                        {
+                            sb_log.AppendLine(string.Format("學年度「{0}」學期「{1}」年級「{2}」日期「{3}」節次「{4}」", each.SchoolYear, each.Semester, each.GradeYear, each.OccurDate.ToString("yyyy/MM/dd"), each.Period));
+                        }
                     }
                 }
 
@@ -179,17 +197,24 @@ namespace JHSchool.Association
                 {
                     tool._A.InsertValues(InsertSettingList);
                     tool._A.DeletedValues(DeleteSettingList);
-                    sb_log.AppendLine("");
-                    sb_log.AppendLine("新增依年級單雙周設定：");
-                    foreach (ClubSetting each in InsertSettingList)
+                    if (InsertSettingList.Count > 0)
                     {
-                        sb_log.AppendLine(string.Format("學年度「{0}」學期「{1}」年級「{2}」為「{3}」週", each.SchoolYear, each.Semester, each.GradeYear, each.IsSingleDoubleWeek ? "雙" : "單"));
+                        sb_log.AppendLine("");
+                        sb_log.AppendLine("上課周次設定：");
+                        foreach (ClubSetting each in InsertSettingList)
+                        {
+                            sb_log.AppendLine(string.Format("學年度「{0}」學期「{1}」年級「{2}」為「{3}」週", each.SchoolYear, each.Semester, each.GradeYear, each.IsSingleDoubleWeek ? "隔週上課" : "每週上課"));
+                        }
                     }
-                    sb_log.AppendLine("");
-                    sb_log.AppendLine("刪除依年級單雙周設定：");
-                    foreach (ClubSetting each in DeleteSettingList)
+
+                    if (DeleteSettingList.Count > 0)
                     {
-                        sb_log.AppendLine(string.Format("學年度「{0}」學期「{1}」年級「{2}」為「{3}」週", each.SchoolYear, each.Semester, each.GradeYear, each.IsSingleDoubleWeek ? "雙" : "單"));
+                        sb_log.AppendLine("");
+                        sb_log.AppendLine("被覆蓋前設定：");
+                        foreach (ClubSetting each in DeleteSettingList)
+                        {
+                            sb_log.AppendLine(string.Format("學年度「{0}」學期「{1}」年級「{2}」為「{3}」週", each.SchoolYear, each.Semester, each.GradeYear, each.IsSingleDoubleWeek ? "隔週上課" : "每週上課"));
+                        }
                     }
                 }
 

@@ -31,15 +31,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
+            this.colDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colWeek = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPer = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.btnExit = new DevComponents.DotNetBar.ButtonX();
             this.cbSingClub = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.lbHelp1 = new DevComponents.DotNetBar.LabelX();
+            this.lbHelp2 = new DevComponents.DotNetBar.LabelX();
             this.cbDoubleClub = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.labelX3 = new DevComponents.DotNetBar.LabelX();
+            this.lbHelp1 = new DevComponents.DotNetBar.LabelX();
             this.cbGradeYear = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.lbSchoolYear = new DevComponents.DotNetBar.LabelX();
@@ -48,8 +48,11 @@
             this.cbSemester = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.comboItem2 = new DevComponents.Editors.ComboItem();
-            this.btnExport = new DevComponents.DotNetBar.ButtonX();
             this.btnImport = new DevComponents.DotNetBar.ButtonX();
+            this.lbHelp3 = new DevComponents.DotNetBar.LabelX();
+            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonItem1 = new DevComponents.DotNetBar.ButtonItem();
+            this.buttonItem2 = new DevComponents.DotNetBar.ButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.intSchoolYear)).BeginInit();
             this.SuspendLayout();
@@ -64,9 +67,9 @@
             this.dataGridViewX1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3});
+            this.colDate,
+            this.colWeek,
+            this.colPer});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
@@ -76,40 +79,40 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataGridViewX1.Location = new System.Drawing.Point(12, 85);
+            this.dataGridViewX1.Location = new System.Drawing.Point(12, 89);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.RowTemplate.Height = 24;
-            this.dataGridViewX1.Size = new System.Drawing.Size(462, 391);
+            this.dataGridViewX1.Size = new System.Drawing.Size(528, 412);
             this.dataGridViewX1.TabIndex = 0;
             this.dataGridViewX1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewX1_CellEndEdit);
             // 
-            // Column1
+            // colDate
             // 
-            this.Column1.HeaderText = "日期";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 200;
+            this.colDate.HeaderText = "日期";
+            this.colDate.Name = "colDate";
+            this.colDate.Width = 200;
             // 
-            // Column2
+            // colWeek
             // 
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Column2.HeaderText = "星期";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
+            this.colWeek.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colWeek.HeaderText = "星期";
+            this.colWeek.Name = "colWeek";
+            this.colWeek.ReadOnly = true;
             // 
-            // Column3
+            // colPer
             // 
-            this.Column3.DisplayMember = "Text";
-            this.Column3.DropDownHeight = 106;
-            this.Column3.DropDownWidth = 121;
-            this.Column3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Column3.HeaderText = "節次";
-            this.Column3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Column3.IntegralHeight = false;
-            this.Column3.ItemHeight = 17;
-            this.Column3.Name = "Column3";
-            this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.colPer.DisplayMember = "Text";
+            this.colPer.DropDownHeight = 106;
+            this.colPer.DropDownWidth = 121;
+            this.colPer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.colPer.HeaderText = "節次";
+            this.colPer.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.colPer.IntegralHeight = false;
+            this.colPer.ItemHeight = 17;
+            this.colPer.Name = "colPer";
+            this.colPer.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colPer.RightToLeft = System.Windows.Forms.RightToLeft.No;
             // 
             // btnSave
             // 
@@ -118,7 +121,7 @@
             this.btnSave.AutoSize = true;
             this.btnSave.BackColor = System.Drawing.Color.Transparent;
             this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSave.Location = new System.Drawing.Point(317, 511);
+            this.btnSave.Location = new System.Drawing.Point(383, 569);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 25);
             this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -133,7 +136,7 @@
             this.btnExit.AutoSize = true;
             this.btnExit.BackColor = System.Drawing.Color.Transparent;
             this.btnExit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnExit.Location = new System.Drawing.Point(399, 511);
+            this.btnExit.Location = new System.Drawing.Point(465, 569);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 25);
             this.btnExit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -154,27 +157,27 @@
             this.cbSingClub.Checked = true;
             this.cbSingClub.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbSingClub.CheckValue = "Y";
-            this.cbSingClub.Location = new System.Drawing.Point(288, 55);
+            this.cbSingClub.Location = new System.Drawing.Point(354, 62);
             this.cbSingClub.Name = "cbSingClub";
             this.cbSingClub.Size = new System.Drawing.Size(80, 21);
             this.cbSingClub.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbSingClub.TabIndex = 3;
             this.cbSingClub.Text = "每週上課";
             // 
-            // lbHelp1
+            // lbHelp2
             // 
-            this.lbHelp1.AutoSize = true;
-            this.lbHelp1.BackColor = System.Drawing.Color.Transparent;
+            this.lbHelp2.AutoSize = true;
+            this.lbHelp2.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
             this.lbHelp1.BackgroundStyle.Class = "";
             this.lbHelp1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbHelp1.Location = new System.Drawing.Point(179, 55);
-            this.lbHelp1.Name = "lbHelp1";
-            this.lbHelp1.Size = new System.Drawing.Size(101, 21);
-            this.lbHelp1.TabIndex = 4;
-            this.lbHelp1.Text = "本年級上課周次";
+            this.lbHelp2.Location = new System.Drawing.Point(247, 62);
+            this.lbHelp2.Name = "lbHelp2";
+            this.lbHelp2.Size = new System.Drawing.Size(101, 21);
+            this.lbHelp2.TabIndex = 4;
+            this.lbHelp2.Text = "本年級上課周次";
             // 
             // cbDoubleClub
             // 
@@ -186,29 +189,28 @@
             this.cbDoubleClub.BackgroundStyle.Class = "";
             this.cbDoubleClub.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.cbDoubleClub.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
-            this.cbDoubleClub.Location = new System.Drawing.Point(374, 55);
+            this.cbDoubleClub.Location = new System.Drawing.Point(440, 62);
             this.cbDoubleClub.Name = "cbDoubleClub";
             this.cbDoubleClub.Size = new System.Drawing.Size(80, 21);
             this.cbDoubleClub.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbDoubleClub.TabIndex = 5;
             this.cbDoubleClub.Text = "隔週上課";
             // 
-            // labelX3
+            // lbHelp1
             // 
-            this.labelX3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelX3.AutoSize = true;
-            this.labelX3.BackColor = System.Drawing.Color.Transparent;
-            // 
+            this.lbHelp1.AutoSize = true;
+            this.lbHelp1.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
-            this.labelX3.BackgroundStyle.Class = "";
-            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelX3.Location = new System.Drawing.Point(12, 482);
-            this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(215, 21);
-            this.labelX3.TabIndex = 11;
-            this.labelX3.Text = "日期可輸入1/10 替換為 2020/1/10";
+            // 
+            this.lbHelp1.BackgroundStyle.Class = "";
+            this.lbHelp1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbHelp1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lbHelp1.Location = new System.Drawing.Point(22, 62);
+            this.lbHelp1.Name = "lbHelp1";
+            this.lbHelp1.Size = new System.Drawing.Size(215, 21);
+            this.lbHelp1.TabIndex = 11;
+            this.lbHelp1.Text = "日期可輸入1/10 替換為 2020/1/10";
             // 
             // cbGradeYear
             // 
@@ -217,7 +219,7 @@
             this.cbGradeYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbGradeYear.FormattingEnabled = true;
             this.cbGradeYear.ItemHeight = 19;
-            this.cbGradeYear.Location = new System.Drawing.Point(78, 53);
+            this.cbGradeYear.Location = new System.Drawing.Point(354, 22);
             this.cbGradeYear.Name = "cbGradeYear";
             this.cbGradeYear.Size = new System.Drawing.Size(80, 25);
             this.cbGradeYear.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -233,7 +235,7 @@
             // 
             this.labelX1.BackgroundStyle.Class = "";
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(34, 55);
+            this.labelX1.Location = new System.Drawing.Point(310, 24);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(34, 21);
             this.labelX1.TabIndex = 13;
@@ -313,21 +315,6 @@
             // 
             this.comboItem2.Text = "2";
             // 
-            // btnExport
-            // 
-            this.btnExport.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnExport.AutoSize = true;
-            this.btnExport.BackColor = System.Drawing.Color.Transparent;
-            this.btnExport.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnExport.Location = new System.Drawing.Point(21, 511);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(118, 25);
-            this.btnExport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnExport.TabIndex = 18;
-            this.btnExport.Text = "依學年度學期匯出";
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
-            // 
             // btnImport
             // 
             this.btnImport.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -335,30 +322,79 @@
             this.btnImport.AutoSize = true;
             this.btnImport.BackColor = System.Drawing.Color.Transparent;
             this.btnImport.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnImport.Location = new System.Drawing.Point(145, 511);
+            this.btnImport.Location = new System.Drawing.Point(103, 569);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(75, 25);
             this.btnImport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnImport.TabIndex = 19;
-            this.btnImport.Text = "覆蓋匯入";
+            this.btnImport.Text = "匯入";
             this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
+            // 
+            // lbHelp3
+            // 
+            this.lbHelp3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbHelp3.AutoSize = true;
+            this.lbHelp3.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.lbHelp3.BackgroundStyle.Class = "";
+            this.lbHelp3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbHelp3.Location = new System.Drawing.Point(22, 507);
+            this.lbHelp3.Name = "lbHelp3";
+            this.lbHelp3.Size = new System.Drawing.Size(500, 56);
+            this.lbHelp3.TabIndex = 20;
+            this.lbHelp3.Text = "匯出條件:1.所有資料 2.匯出所選學年期 3.匯出所選學年期+年級\r\n匯入說明:您匯入一年級資料則所有一年級日期資料將被清空取代(以您匯入內容為準)\r\n請注意若" +
+    "此份資料內,包含一筆二年級之日期資料,則二年級日期資料也會被清空";
+            // 
+            // buttonX1
+            // 
+            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonX1.BackColor = System.Drawing.Color.Transparent;
+            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX1.Location = new System.Drawing.Point(22, 569);
+            this.buttonX1.Name = "buttonX1";
+            this.buttonX1.Size = new System.Drawing.Size(75, 25);
+            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX1.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.buttonItem1,
+            this.buttonItem2});
+            this.buttonX1.TabIndex = 21;
+            this.buttonX1.Text = "匯出";
+            this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
+            // 
+            // buttonItem1
+            // 
+            this.buttonItem1.GlobalItem = false;
+            this.buttonItem1.Name = "buttonItem1";
+            this.buttonItem1.Text = "依學年度學期";
+            this.buttonItem1.Click += new System.EventHandler(this.buttonItem1_Click);
+            // 
+            // buttonItem2
+            // 
+            this.buttonItem2.GlobalItem = false;
+            this.buttonItem2.Name = "buttonItem2";
+            this.buttonItem2.Text = "依學年度學期年級";
+            this.buttonItem2.Click += new System.EventHandler(this.buttonItem2_Click);
             // 
             // ClubSectionDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(486, 545);
+            this.ClientSize = new System.Drawing.Size(552, 602);
+            this.Controls.Add(this.buttonX1);
+            this.Controls.Add(this.lbHelp3);
             this.Controls.Add(this.btnImport);
-            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.cbSemester);
             this.Controls.Add(this.intSchoolYear);
             this.Controls.Add(this.lbSemester);
             this.Controls.Add(this.lbSchoolYear);
             this.Controls.Add(this.labelX1);
             this.Controls.Add(this.cbGradeYear);
-            this.Controls.Add(this.labelX3);
-            this.Controls.Add(this.cbDoubleClub);
             this.Controls.Add(this.lbHelp1);
+            this.Controls.Add(this.cbDoubleClub);
+            this.Controls.Add(this.lbHelp2);
             this.Controls.Add(this.cbSingClub);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnSave);
@@ -380,12 +416,9 @@
         private DevComponents.DotNetBar.ButtonX btnSave;
         private DevComponents.DotNetBar.ButtonX btnExit;
         private DevComponents.DotNetBar.Controls.CheckBoxX cbSingClub;
-        private DevComponents.DotNetBar.LabelX lbHelp1;
+        private DevComponents.DotNetBar.LabelX lbHelp2;
         private DevComponents.DotNetBar.Controls.CheckBoxX cbDoubleClub;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn Column3;
-        private DevComponents.DotNetBar.LabelX labelX3;
+        private DevComponents.DotNetBar.LabelX lbHelp1;
         private DevComponents.DotNetBar.Controls.ComboBoxEx cbGradeYear;
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.LabelX lbSchoolYear;
@@ -394,7 +427,13 @@
         private DevComponents.DotNetBar.Controls.ComboBoxEx cbSemester;
         private DevComponents.Editors.ComboItem comboItem1;
         private DevComponents.Editors.ComboItem comboItem2;
-        private DevComponents.DotNetBar.ButtonX btnExport;
         private DevComponents.DotNetBar.ButtonX btnImport;
+        private DevComponents.DotNetBar.LabelX lbHelp3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colWeek;
+        private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn colPer;
+        private DevComponents.DotNetBar.ButtonX buttonX1;
+        private DevComponents.DotNetBar.ButtonItem buttonItem1;
+        private DevComponents.DotNetBar.ButtonItem buttonItem2;
     }
 }

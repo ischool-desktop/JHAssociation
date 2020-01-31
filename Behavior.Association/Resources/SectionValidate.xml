@@ -8,27 +8,28 @@
       <Field Name="年級"/>
       <Field Name="日期"/>
       <Field Name="節次"/>
+      <Field Name="上課週次"/>
     </Detector>
   </DuplicateDetection>
   <FieldList>
-    <Field Required="True" Name="學年度" Description="學年度/學期/社團名稱/學號為鍵值必填">
+    <Field Required="True" Name="學年度" Description="學年度為必填欄位">
       <Validate AutoCorrect="False" Description="「學年度」不允許空白。" ErrorType="Error" Validator="不可空白" When=""/>
     </Field>
-    <Field Required="True" Name="學期" Description="學年度/學期/社團名稱/學號為鍵值必填">
+    <Field Required="True" Name="學期" Description="學期為必填欄位">
       <Validate AutoCorrect="False" Description="「學期」不允許空白。" ErrorType="Error" Validator="不可空白" When=""/>
       <Validate AutoCorrect="False" Description="「學期」只允許「1、2」。" ErrorType="Error" Validator="學期列舉" When=""/>
     </Field>
-    <Field Required="True" Name="年級" EmptyAlsoValidate="False" Description="請輸入目前系統內的年級">
+    <Field Required="True" Name="年級" Description="請輸入目前系統內的年級">
       <Validate AutoCorrect="False" Description="「年級」必須存在系統。" ErrorType="Error" Validator="年級是否存在目前系統" When=""/>
     </Field>
-    <Field Required="False" Name="日期" EmptyAlsoValidate="False" Description="必須是(年/月/日)日期">
-      <Validate AutoCorrect="False" Description="「生日」格式不正確，建議使用西元「年/月/日」例如「2019/03/18」。" ErrorType="Warning" Validator="合法日期" When="" />
+    <Field Required="True" Name="日期" Description="必須是(年/月/日)日期">
+      <Validate AutoCorrect="False" Description="「生日」格式不正確，建議使用西元「年/月/日」例如「2019/03/18」。" ErrorType="Error" Validator="合法日期" When="" />
     </Field>
-    <Field Required="False" Name="節次" EmptyAlsoValidate="False" Description="節次必須是系統內的節次">
+    <Field Required="True" Name="節次" Description="節次必須是系統內的節次">
       <Validate AutoCorrect="False" Description="「節次」必須存在系統。" ErrorType="Error" Validator="節次是否存在目前系統" When=""/>
     </Field>
-    <Field Required="False" Name="單雙周" Description="本課程是否為單雙周課程">
-      <Validate AutoCorrect="False" Description="「單雙周」只允許「單、雙」。" ErrorType="Error" Validator="單雙週列舉" When=""/>
+    <Field Required="True" Name="上課週次" Description="設定本年級上課星期為「每週上課」或「隔週上課」">
+      <Validate AutoCorrect="False" Description="「上課週次」只允許「每週上課、隔週上課」。" ErrorType="Error" Validator="上課週次列舉" When=""/>
     </Field>
   </FieldList>
   <ValidatorList>
@@ -39,9 +40,9 @@
       <Item Value="1"/>
       <Item Value="2"/>
     </FieldValidator>
-    <FieldValidator Name="單雙週列舉" Type="Enumeration">
-      <Item Value="單"/>
-      <Item Value="雙"/>
+    <FieldValidator Name="上課週次列舉" Type="Enumeration">
+      <Item Value="每週上課"/>
+      <Item Value="隔週上課"/>
     </FieldValidator>
     <FieldValidator Name="合法日期" Type="MixDate">
       <!-- Gregorian | Taiwan-->
@@ -69,7 +70,7 @@
   </ValidatorList>
 
   <RowValidate>
-    <Validate AutoCorrect="false" Description="「同年級」單雙周必須相同" ErrorType="Error" Validator="同年級單雙周必須相同" When=""/>
+    <Validate AutoCorrect="false" Description="「相同年級」上課週次必須相同" ErrorType="Error" Validator="同年級單雙周必須相同" When=""/>
   </RowValidate>
   <ConditionList/>
 </ValidateRule>
