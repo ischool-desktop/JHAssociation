@@ -41,8 +41,8 @@ namespace JHSchool.Association
             mOption = Option;
 
             //取得目前的學年期與它的時間表資料
-            ClubScheduleList = tool._A.Select<ClubSchedule>(string.Format("school_year='{0}' and semester='{1}'", _schoolyear, _semester));
-            ClubSettingList = tool._A.Select<ClubSetting>(string.Format("school_year='{0}' and semester='{1}'", _schoolyear, _semester));
+            ClubScheduleList = tool._A.Select<ClubSchedule>();
+            ClubSettingList = tool._A.Select<ClubSetting>();
             ClubScheduleDic = new Dictionary<string, List<ClubSchedule>>();
             ClubSettingDic = new Dictionary<string, ClubSetting>();
 
