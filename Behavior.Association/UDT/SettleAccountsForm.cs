@@ -33,6 +33,7 @@ namespace JHSchool.Association
         //private List<AssnCode> UpdataAssnCode = new List<AssnCode>(); //UDT更新清單
         private Dictionary<string, AssnCode> UDTAssnUpdataList = new Dictionary<string, AssnCode>(); //已存在資料(Key為學生ID)
 
+        Dictionary<string, JHSCAttendRecord> SCAttendDic;
         bool CheckTrue = false;
 
         public SettleAccountsForm()
@@ -123,8 +124,11 @@ namespace JHSchool.Association
             {
                 try
                 {
-                    _accessHelper.InsertValues(InsertList.ToArray());
-                    _accessHelper.UpdateValues(UpdataList.ToArray());
+                    if (InsertList.Count > 0)
+                        _accessHelper.InsertValues(InsertList.ToArray());
+
+                    if (UpdataList.Count > 0)
+                        _accessHelper.UpdateValues(UpdataList.ToArray());
                 }
                 catch (Exception ex)
                 {
@@ -206,6 +210,13 @@ namespace JHSchool.Association
 
             List<JHSCAttendRecord> _SCAList = JHSCAttend.SelectByCourseIDs(AssnAdmin.Instance.SelectedSource);
 
+
+
+
+            //2020/3/ 27 處理
+            //新增一個取得修課紀錄的資料集
+            SCAttendDic = new Dictionary<string, JHSCAttendRecord>();
+
             foreach (JHSCAttendRecord each in _SCAList)
             {
                 JHStudentRecord sr = each.Student;
@@ -214,6 +225,11 @@ namespace JHSchool.Association
                     if (!_Students.Contains(each.RefStudentID))
                     {
                         _Students.Add(each.RefStudentID);
+                    }
+
+                    if (!SCAttendDic.ContainsKey(sr.ID))
+                    {
+                        SCAttendDic.Add(sr.ID, each);
                     }
                 }
             }
@@ -261,6 +277,34 @@ namespace JHSchool.Association
 
             //取得課程+學生成績資料
             List<AssnScoreRecord> SCETakeList = JHSCETake.SelectByStudentAndCourse(StudentList, AssnAdmin.Instance.SelectedSource).AsKHJHSCETakeRecords();
+
+            //2020/3/26 - 調整邏輯
+            //沒有輸入成績也產生社團紀錄
+            foreach (string each in StudentList)
+            {
+                if (SCAttendDic.ContainsKey(each))
+                {
+                    JHSCAttendRecord sca = SCAttendDic[each];
+                    AssnCode ac = new AssnCode();
+                    ac.StudentID = each; //學生ID
+                    ac.SchoolYear = SchoolYear; //學年度
+                    ac.Semester = Semester; //學期
+
+                    DSXmlHelper ds = new DSXmlHelper("Content");
+                    ds.AddElement("Item");
+                    ds.SetAttribute("Item", "AssociationName", sca.Course.Name);
+                    ds.SetAttribute("Item", "Score", "");
+                    ds.SetAttribute("Item", "Effort", "");
+                    ds.SetAttribute("Item", "Text", "");
+                    ac.Scores = ds.BaseElement.OuterXml;
+
+                    if (!UDTAssnUpdataList.ContainsKey(each))
+                    {
+                        UDTAssnUpdataList.Add(each, ac);
+                    }
+                }
+            }
+
 
             foreach (AssnScoreRecord each in SCETakeList)
             {
@@ -318,6 +362,8 @@ namespace JHSchool.Association
                     UDTAssnUpdataList.Add(each.RefStudentID, ac);
                 }
             }
+
+
             #endregion
         }
 
