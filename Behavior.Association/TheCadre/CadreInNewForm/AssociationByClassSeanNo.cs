@@ -110,7 +110,7 @@ namespace JHSchool.Association
         private void GetStudentAndCadre()
         {
             //取得本學期所有社團幹部
-            CadreList = _accessHelper.Select<SchoolObject>(string.Format("SchoolYear = '{0}' and Semester = '{1}' and ReferenceType = '{2}'", DefSchoolYear, DefSemester, "社團幹部"));
+            CadreList = _accessHelper.Select<SchoolObject>(string.Format("SchoolYear = '{0}' and Semester = '{1}' and ReferenceType = '{2}' and Text='{3}'", DefSchoolYear, DefSemester, "社團幹部", _AssociationRecord.Name));
 
             SetObj();
 
@@ -413,7 +413,7 @@ namespace JHSchool.Association
             //敘獎模式
             if (checkBoxX1.Checked)
             {
-                (new K12.Behavior.TheCadre.CadreMeritManage.CadreMeritManage(this.DefSchoolYear, this.DefSemester, CadreType.ClubCadre,this._AssociationID)).ShowDialog();
+                (new K12.Behavior.TheCadre.CadreMeritManage.CadreMeritManage(this.DefSchoolYear, this.DefSemester, CadreType.ClubCadre, this._AssociationID)).ShowDialog();
                 // 舊功能畫面
                 //List<SchoolObject> list = new List<SchoolObject>();
                 //if (CadreIDList.Count != 0)
